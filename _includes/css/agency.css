@@ -276,7 +276,8 @@ header {
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
-    background-color: #{{ site.data.template.color.secondary-dark }};
+    //background-color: #{{ site.data.template.color.secondary-dark }};
+    backgorund-color: #000;
 }
 
 header .intro-text {
