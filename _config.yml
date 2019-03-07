@@ -2,8 +2,8 @@ url: https://glasgowimprovtheatre.github.io/
 baseurl: /
 
 # Site settings
-title: Awesome Title
-email: your-email@domain.com
+title: Glasgow Improv Theatre
+email: glasgowimprovtheatre@gmail.com
 description: "Glasgow Improv Theatre - The GIT. The home of improv comedy in Glasgow, Scotland."
 
 
@@ -17,8 +17,8 @@ social:
 
 # Postal address (add as many lines as necessary)
 address:
-  - line: 36 Bell St
-  - line: Glasgow, Scotland, G1 1LG
+  - line: Blackfriars
+  - line: 36 Bell St, Glasgow, Scotland, G1 1LG
 
 # Build settings
 markdown: kramdown
