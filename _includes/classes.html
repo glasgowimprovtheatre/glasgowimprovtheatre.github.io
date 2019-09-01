@@ -41,7 +41,13 @@
                     </span>
                     <h4 class="service-heading">Improv 301</h4>
                     <p>
-                        <a href="{{site.301-link}}" class="btn btn-info" target="_blank">Register interest</a>
+                        <a href="{{site.301-link}}" class="btn btn-info" target="_blank">
+                            {% if site.301-link contains "goo.gl/forms" %}
+                            Register interest
+                            {% else %}
+                            Sign up
+                            {% endif %}
+                        </a>
                     </p>
                     <p class="text-muted">Pre-requisites: GIT 201 (or equivalent)</p>
                     <p class="text-muted">The Harold, openings, group games</p>
