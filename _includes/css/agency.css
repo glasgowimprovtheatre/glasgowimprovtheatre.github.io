@@ -176,7 +176,7 @@ fieldset[disabled] .btn-xl.active {
 }
 
 .navbar-default .navbar-brand {
-    font-family: "Acme","Helvetica Neue",Helvetica,Arial,cursive;
+    font-family: {{site.data.template.font.logo}};
     color: #{{ site.data.template.color.primary }};
 }
 
