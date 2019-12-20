@@ -7,6 +7,5 @@ color:
 
 # Font Families
 font:
-  primary: 'Roboto Mono, "Helvetica Neue",Helvetica,Arial,sans-serif'
+  primary: '"Roboto Mono", "Helvetica Neue",Helvetica,Arial,sans-serif'
   secondary: '"Roboto Bold", "Helvetica Neue", Helvetica,Arial,sans-serif'
-  logo: '"Roboto Mono", "Helvetica Neue", Helvetica,Arial,sans-serif'
