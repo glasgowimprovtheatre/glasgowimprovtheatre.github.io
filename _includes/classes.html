@@ -40,13 +40,15 @@
                     </span>
                     <h4 class="service-heading">Improv 201</h4>
                     <p>
-                        <a href="{{site.201-link}}" class="btn btn-info" target="_blank">
-                            {% if site.201-link contains "goo.gl/forms" %}
-                            Register interest
-                            {% else %}
-                            Sign up <br> {{site.201-date}}
-                            {% endif %}
-                        </a>
+                        {% if site.201-link contains "goo.gl/forms" %}
+                            <a href="{{site.201-link}}" class="btn btn-default" target="_blank">
+                                Register interest
+                            </a>
+                        {% else %}
+                            <a href="{{site.201-link}}" class="btn btn-info" target="_blank">
+                                Sign up <br> {{site.201-date}}
+                            </a>
+                        {% endif %}
                     </p>
                     <p class="text-muted">Pre-requisites: GIT 101 (or equivalent)</p>
                     <p class="text-muted">Game of the scene, heightening & exploration, 2nd beats</p>
@@ -59,13 +61,15 @@
                     </span>
                     <h4 class="service-heading">Improv 301</h4>
                     <p>
-                        <a href="{{site.301-link}}" class="btn btn-info" target="_blank">
-                            {% if site.301-link contains "goo.gl/forms" %}
-                            Register interest
-                            {% else %}
-                            Sign up <br> {{site.301-date}}
-                            {% endif %}
-                        </a>
+                        {% if site.301-link contains "goo.gl/forms" %}
+                            <a href="{{site.301-link}}" class="btn btn-default" target="_blank">
+                                Register interest
+                            </a>
+                        {% else %}
+                            <a href="{{site.301-link}}" class="btn btn-info" target="_blank">
+                                Sign up <br> {{site.301-date}}
+                            </a>
+                        {% endif %}
                     </p>
                     <p class="text-muted">Pre-requisites: GIT 201 (or equivalent)</p>
                     <p class="text-muted">The Harold, openings, group games</p>
@@ -78,13 +82,15 @@
                     </span>
                     <h4 class="service-heading">Improv 401</h4>
                     <p>
-                        <a href="{{site.401-link}}" class="btn btn-info" target="_blank">
-                            {% if site.401-link contains "goo.gl/forms" %}
+                        {% if site.401-link contains "goo.gl/forms" %}
+                            <a href="{{site.401-link}}" class="btn btn-default" target="_blank">
                             Register interest
-                            {% else %}
-                            Sign up <br> {{site.401-date}}
-                            {% endif %}
-                        </a>
+                            </a>
+                        {% else %}
+                            <a href="{{site.401-link}}" class="btn btn-info" target="_blank">
+                                Sign up <br> {{site.401-date}}
+                            </a>
+                        {% endif %}
                     </p>
                     <p class="text-muted">Pre-requisites: GIT 301 (or equivalent)</p>
                     <p class="text-muted">Advanced techniques, different forms/openings</p>
