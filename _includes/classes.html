@@ -19,13 +19,15 @@
                     </span>
                     <h4 class="service-heading">Improv 101</h4>
                     <p>
-                        <a href="{{site.101-link}}" class="btn btn-info" target="_blank">
-                            {% if site.101-link contains "goo.gl/forms" %}
-                            Register interest
-                            {% else %}
-                            Sign up <br> {{site.101-date}}
-                            {% endif %}
-                        </a>
+                        {% if site.101-link contains "goo.gl/forms" %}
+                            <a href="{{site.101-link}}" class="btn btn-default" target="_blank">
+                                Register interest
+                            </a>
+                        {% else %}
+                            <a href="{{site.101-link}}" class="btn btn-info" target="_blank">
+                                Sign up <br> {{site.101-date}}
+                            </a>
+                        {% endif %}
                     </p>
                     <p class="text-muted">If you are new to improv or need a refresher. Suitable for beginners!</p>
                     <p class="text-muted">Scene fundamentals, agreement, listening, and playing grounded characters</p>
