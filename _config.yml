@@ -9,8 +9,8 @@ description: "Glasgow Improv Theatre - The GIT. Improv classes, workshops, and s
 # Course links
 101-link: https://goo.gl/forms/pz9jThIwVHwNrMBA2
 101-date: 
-201-link: https://www.facebook.com/events/810518859468342/
-201-date: 14th March 2020
+201-link: https://goo.gl/forms/pz9jThIwVHwNrMBA2
+201-date: 
 301-link: https://goo.gl/forms/pz9jThIwVHwNrMBA2
 301-date: 
 401-link: https://goo.gl/forms/pz9jThIwVHwNrMBA2
@@ -26,6 +26,10 @@ social:
     url: http://facebook.com/improvglasgow
   - title: instagram
     url: http://instagram.com/improvglasgow
+  - title: twitch
+    url: http://twitch.tv/improvglasgow
+  - title: youtube
+    url: https://www.youtube.com/channel/UC7eUy-KQZLZS4rqLz_zQjnQ/
 
 # Postal address (add as many lines as necessary)
 address:
