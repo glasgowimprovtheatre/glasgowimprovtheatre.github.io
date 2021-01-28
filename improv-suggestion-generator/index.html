@@ -4,7 +4,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Improv Suggestion Generator</title>
+    <title>Improv Suggestion Generator - Get a random word/emotion/location/job for your improv scene</title>
+    <meta name="description" content="Generate a random word/emotion/location/job for your improv scene. Built by Martin for the Glasgow Improv Theatre.">
+    <meta property="og:image" content="og-image" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
@@ -32,6 +34,8 @@
         <button class="btn btn-lg btn-light" type="submit" onclick="GetRandomWikiArticle()">Random Wikipedia Article</button>
         <br /><br />
         <button class="btn btn-lg btn-light" type="submit" onclick="GetRandomSong()">Random Song</button>
+        <br /><br />
+        <button class="btn btn-lg btn-light" type="submit" onclick="GetRandomSuggestion('mobydick.txt')">Random Line from Moby Dick</button>
         <br /><br /><br /><br />
 
         <p class="small text-muted">Made by Martin for the <a href="https://improvglasgow.co.uk">Glasgow Improv Theatre</a></p>
