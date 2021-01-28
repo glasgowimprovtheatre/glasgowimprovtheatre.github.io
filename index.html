@@ -1,87 +1,20 @@
-﻿<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Improv Suggestion Generator - Get a random word/emotion/location/job for your improv scene</title>
-    <meta name="description" content="Generate a random word/emotion/location/job for your improv scene. Built by Martin for the Glasgow Improv Theatre.">
-    <meta property="og:image" content="og-image" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-</head>
-<body>
-    
-    <div class="container text-center">
-        <br />
-        <h4>Improv Suggestion Generator</h4>
-        <br />
+---
+layout: default
+---
 
-        <div class="col-md-6 offset-md-3">
-            <div class="jumbotron">
-                <h1 class="display-4" style="font-size: 30px">
-                    <span id="suggestion"></span>&nbsp;
-                </h1>
-            </div>
-        </div>
+<div class="home">
 
-        <button class="btn btn-lg btn-primary" onclick="GetRandomSuggestion('words.txt')">Word</button>
-        <button class="btn btn-lg btn-success" onclick="GetRandomSuggestion('emotions.txt')">Emotion</button>
-        <button class="btn btn-lg btn-secondary" onclick="GetRandomSuggestion('locations.txt')">Location</button>
-        <button class="btn btn-lg btn-danger" onclick="GetRandomSuggestion('jobs.txt')">Job</button>
+  <h1>Posts </h1>
 
-        <br /><br /><br /><br />
+  <ul class="posts">
+    {% for post in site.posts %}
+      <li>
+        <span class="post-date">{{ post.date | date: "%b %-d, %Y" }}</span>
+        <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+      </li>
+    {% endfor %}
+  </ul>
 
-        <button class="btn btn-lg btn-light" type="submit" onclick="GetRandomWikiArticle()">Random Wikipedia Article</button>
-        <br /><br />
-        <button class="btn btn-lg btn-light" type="submit" onclick="GetRandomSong()">Random Song</button>
-        <br /><br />
-        <button class="btn btn-lg btn-light" type="submit" onclick="GetRandomSuggestion('mobydick.txt')">Random Line from Moby Dick</button>
-        <br /><br /><br /><br />
+  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
 
-        <p class="small text-muted">Made by Martin for the <a href="https://improvglasgow.co.uk">Glasgow Improv Theatre</a></p>
-    </div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
-
-    <script type="text/javascript">
-        function GetRandomSuggestion(filename) {
-            $.get(filename, function (data) {
-                var lines = data.split("\n");
-                var randomNumber = Math.floor(Math.random() * lines.length);
-                var suggestion = lines[randomNumber];
-                showSuggestion(suggestion);
-            });
-        }
-
-        function showSuggestion(text) {
-            $("#suggestion").hide();
-            $("#suggestion").html(text);
-            $("#suggestion").fadeIn();
-        }
-        
-        function GetRandomWikiArticle() {
-            var url = "https://en.wikipedia.org/w/api.php?action=query&format=json&list=random&rnnamespace=0&rnlimit=1&origin=*";
-
-            $.get(url, function (data) {
-                var title = data.query.random[0].title;
-                showSuggestion(title);
-            });
-        }
-
-        function GetRandomSong() {
-            var url = "http://ws.audioscrobbler.com/2.0/?method=chart.gettoptracks&api_key=830baea2583ced9ccfee905eb1a9667c&format=json&limit=1000";
-            
-            $.get(url, function (data) {
-                var randomNumber = Math.floor(Math.random() * 1000);
-                var track = data.tracks.track[randomNumber];
-                var artist = track.artist.name;
-                var title = track.name;
-                var link = " (<a href='" + track.url + "' target='_blank'>link</a>)";
-                showSuggestion(artist + " - " + title + link);
-            });
-
-        }
-
-    </script>
-</body>
-</html>
+</div>
