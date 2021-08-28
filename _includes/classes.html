@@ -50,8 +50,8 @@
                     </span>
                     <h4 class="service-heading">Improv 201</h4>
                     <p>
-                        {% if site.201-link contains "goo.gl/forms" %}
-                            <a href="{{site.201-link}}" class="btn btn-default" target="_blank">
+                        {% if site.201-link == blank %}
+                            <a href="{{site.mailing-list-link}}" class="btn btn-default" target="_blank">
                                 Register interest
                             </a>
                         {% else %}
