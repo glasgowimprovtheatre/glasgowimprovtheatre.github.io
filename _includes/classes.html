@@ -22,8 +22,8 @@
                     </span>
                     <h4 class="service-heading">Improv 101</h4>
                     <p>
-                        {% if site.101-link contains "goo.gl/forms" %}
-                            <a href="{{site.101-link}}" class="btn btn-default" target="_blank">
+                        {% if site.101-link == '' %}
+                            <a href="{{site.mailing-list-link}}" class="btn btn-default" target="_blank">
                                 Register interest
                             </a>
                         {% else %}
@@ -78,8 +78,8 @@
                     </span>
                     <h4 class="service-heading">Improv 301</h4>
                     <p>
-                        {% if site.301-link contains "goo.gl/forms" %}
-                            <a href="{{site.301-link}}" class="btn btn-default" target="_blank">
+                        {% if site.301-link == '' %}
+                            <a href="{{site.mailing-list-link}}" class="btn btn-default" target="_blank">
                                 Register interest
                             </a>
                         {% else %}
@@ -106,8 +106,8 @@
                     </span>
                     <h4 class="service-heading">Improv 401</h4>
                     <p>
-                        {% if site.401-link contains "goo.gl/forms" %}
-                            <a href="{{site.401-link}}" class="btn btn-default" target="_blank">
+                        {% if site.401-link == '' %}
+                            <a href="{{site.mailing-list-link}}" class="btn btn-default" target="_blank">
                                 Register interest
                             </a>
                         {% else %}
