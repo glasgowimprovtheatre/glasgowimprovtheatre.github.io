@@ -7,8 +7,8 @@ email: glasgowimprovtheatre@gmail.com
 description: "Glasgow Improv Theatre - The GIT. Improv classes, workshops, and shows in Glasgow, Scotland."
 
 # Course links
-101-link: 'https://www.eventbrite.co.uk/e/git-improv-101-sundays-8-week-course-tickets-636108757417'
-101-date: 28th May 2023
+101-link: ''
+101-date: 
 201-link: ''
 201-date: 
 301-link: ''
@@ -34,8 +34,8 @@ social:
 
 # Postal address (add as many lines as necessary)
 address:
-  - line: Blackfriars
-  - line: 36 Bell St, Glasgow, Scotland, G1 1LG
+  - line: The Old Hairdressers
+  - line: Renfield Ln, Glasgow G2 5AR
 
 # Build settings
 markdown: kramdown
