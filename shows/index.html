@@ -82,7 +82,14 @@
                         var venue = event.venue["name"];
                         var venueAddress = event.venue.address["localized_address_display"];
                         var isSoldOut = event.ticket_availability["is_sold_out"];
-
+                        var dateFormatted = startDate.toLocaleString('en-GB', {weekday: 'long',
+                                                                                        day: 'numeric',
+                                                                                        month: 'short',
+                                                                                        year: 'numeric',
+                                                                                        hour: 'numeric',
+                                                                                        minute: 'numeric',
+                                                                                        hour12: true,
+                                                                                        });
                         // Create Bootstrap-styled HTML elements for each event
                         var $eventCard = $("<div>").addClass("card mb-3");
                         var $eventImageLink = $("<a>").attr("href", url);
@@ -90,7 +97,7 @@
                         var $eventCardBody = $("<div>").addClass("card-body text-center");
                         var $eventName = $("<h5>").addClass("card-title").text(name);
                         var $eventSummary = $("<p>").addClass("card-text").text(summary);
-                        var $eventDate = $("<p>").addClass("card-text").text("Date: " + startDate.toLocaleString());
+                        var $eventDate = $("<p>").addClass("card-text").text("Date: " + dateFormatted);
                         var $eventVenue = $("<p>").addClass("card-text").text("Venue: " + venue);
                         var $eventAddress = $("<p>").addClass("card-text").text("Address: " + venueAddress);
                         var $ticketLink = $("<a>").addClass("btn").attr("href", url);
