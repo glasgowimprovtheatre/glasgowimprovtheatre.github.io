@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Glasgow Improv Theatre Shows</title>
+    <meta name="description" content="Glasgow Improv Theatre Shows">
+    <meta property="og:image" content="http://improvglasgow.co.uk/img/og-image.png" />
+    <link rel="shortcut icon" href="http://improvglasgow.co.uk/favicon.ico">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Global Site Tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-30702762-5"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-30702762-5');
+    </script>
+
+
+</head>
+<body>
+    
+    <div class="col-md-4 mb-4 mx-auto text-center">
+        <br />
+        <a href="http://improvglasgow.co.uk">
+            <img src="http://improvglasgow.co.uk/img/git-logo.png" style="width:200px" title="Glasgow Improv Theatre - The GIT" alt="Glasgow Improv Theatre - The GIT">
+        </a>
+        <h2>Glasgow Improv Theatre Shows!</h2>
+        <br />
+        <div class="" id="event-container"></div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+        $(function() {
+            GetShows();
+        });
+        
+        function GetShows() {
+            var url = "https://www.eventbriteapi.com/v3/organizations/568772580943/events/?token=H2CWEK4JO55AWX2WB666&time_filter=current_future&expand=ticket_availability,venue";
+
+            $.get(url, function (data) {
+                console.log(data);
+
+                // Group events by month
+                var eventsByMonth = {};
+
+                data.events.forEach(event => {
+                    var startDate = new Date(event.start.local);
+                    var monthYearKey = startDate.toLocaleString('en-US', { month: 'long', year: 'numeric' });
+
+                    if (!eventsByMonth[monthYearKey]) {
+                        eventsByMonth[monthYearKey] = [];
+                    }
+
+                    eventsByMonth[monthYearKey].push(event);
+                });
+
+                // Display events by month
+                for (var monthYear in eventsByMonth) {
+                    var events = eventsByMonth[monthYear];
+
+                    // Create Bootstrap-styled HTML elements for each month
+                    var $monthContainer = $("<div>").addClass("mb-4");
+                    var $monthTitle = $("<h2 class='text-center'>").text(monthYear).addClass("mb-3");
+
+                    // Append month title to the container
+                    $monthContainer.append($monthTitle);
+
+                    // Append events to the container
+                    events.forEach(event => {
+                        var name = event.name["text"];
+                        var summary = event.summary;
+                        var url = event.url;
+                        var startDate = new Date(event.start.local);
+                        var imageUrl = event.logo.original["url"];
+                        var venue = event.venue["name"];
+                        var venueAddress = event.venue.address["localized_address_display"];
+                        var isSoldOut = event.ticket_availability["is_sold_out"];
+
+                        // Create Bootstrap-styled HTML elements for each event
+                        var $eventCard = $("<div>").addClass("card mb-3");
+                        var $eventImageLink = $("<a>").attr("href", url);
+                        var $eventImage = $("<img>").addClass("card-img-top").attr("src", imageUrl);
+                        var $eventCardBody = $("<div>").addClass("card-body text-center");
+                        var $eventName = $("<h5>").addClass("card-title").text(name);
+                        var $eventSummary = $("<p>").addClass("card-text").text(summary);
+                        var $eventDate = $("<p>").addClass("card-text").text("Date: " + startDate.toLocaleString());
+                        var $eventVenue = $("<p>").addClass("card-text").text("Venue: " + venue);
+                        var $eventAddress = $("<p>").addClass("card-text").text("Address: " + venueAddress);
+                        var $ticketLink = $("<a>").addClass("btn").attr("href", url);
+
+                        // Check if the event is sold out
+                        if (isSoldOut) {
+                            $ticketLink.text("Sold Out").addClass("btn-danger").prop("disabled", true);
+                        } else {
+                            $ticketLink.text("Get Tickets").addClass("btn-primary");
+                        }
+
+                        // Append elements to the container
+                        $eventImageLink.append($eventImage);
+                        $eventCardBody.append($eventName, $eventSummary, $eventDate, $eventVenue, $eventAddress, $ticketLink);
+                        $eventCard.append($eventImageLink, $eventCardBody);
+                        $monthContainer.append($eventCard);
+                    });
+
+                    // Append the container to the main event container
+                    $("#event-container").append($monthContainer);
+                }
+            });
+        }
+
+    </script>
+</body>
+</html>
