@@ -96,7 +96,18 @@
                 console.log(data);
                 allEventsData = data;
                 applyFilter(); 
+                preselectFilterFromHash();
             });
+        }
+        
+        function preselectFilterFromHash() {
+            var filterHash = window.location.hash.substr(1); 
+
+            if (filterHash) {
+                $("input[name='filter']").prop('checked', false); 
+                $("#" + filterHash).prop('checked', true); 
+                applyFilter(); 
+            }
         }
 
         function applyFilter() {
