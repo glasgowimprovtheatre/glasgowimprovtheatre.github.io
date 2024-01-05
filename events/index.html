@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Glasgow Improv Theatre Shows</title>
+    <meta name="description" content="Glasgow Improv Theatre Shows">
+    <meta property="og:image" content="http://improvglasgow.co.uk/img/og-image.png" />
+    <link rel="shortcut icon" href="http://improvglasgow.co.uk/favicon.ico">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        .lds-ring {
+        display: inline-block;
+        position: relative;
+        width: 80px;
+        height: 80px;
+        }
+        .lds-ring div {
+        box-sizing: border-box;
+        display: block;
+        position: absolute;
+        width: 64px;
+        height: 64px;
+        margin: 8px;
+        border: 8px solid #000;
+        border-radius: 50%;
+        animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+        border-color: #000 transparent transparent transparent;
+        }
+        .lds-ring div:nth-child(1) {
+        animation-delay: -0.45s;
+        }
+        .lds-ring div:nth-child(2) {
+        animation-delay: -0.3s;
+        }
+        .lds-ring div:nth-child(3) {
+        animation-delay: -0.15s;
+        }
+        @keyframes lds-ring {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="col-md-4 mb-4 mx-auto text-center">
+        <br />
+        <a href="http://improvglasgow.co.uk">
+            <img src="http://improvglasgow.co.uk/img/git-logo.png" style="width:200px" title="Glasgow Improv Theatre - The GIT - events" alt="Glasgow Improv Theatre - The GIT - events">
+        </a>
+        <h2>Glasgow Improv Theatre events!</h2>
+        <br />
+                <form></form>
+        <div class="text-center mb-4">
+            <label>Filter: </label>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="filter" id="all" value="all" checked onclick="applyFilter()">
+                <label class="form-check-label" for="all">All events</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="filter" id="shows" value="shows" onclick="applyFilter()">
+                <label class="form-check-label" for="shows">Shows</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="filter" id="workshops" value="workshops" onclick="applyFilter()">
+                <label class="form-check-label" for="workshops">Workshops</label>
+            </div>
+        </div>
+        <div class="" id="event-container">
+            <p class="text-center">Loading...</p>
+            <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+
+        var allEventsData;
+
+        $(function() {
+            GetShows();
+        });
+        
+        function GetShows() {
+            var url = "https://www.eventbriteapi.com/v3/organizations/568772580943/events/?token=H2CWEK4JO55AWX2WB666&time_filter=current_future&expand=ticket_availability,venue";
+
+            $.get(url, function (data) {
+                console.log(data);
+                allEventsData = data;
+                applyFilter(); 
+            });
+        }
+
+        function applyFilter() {
+            var selectedFilter = $("input[name='filter']:checked").val();
+            var filteredEvents;
+
+            switch (selectedFilter) {
+                case "workshops":
+                    filteredEvents = allEventsData.events.filter(event => event.name.text.toLowerCase().includes("course") || event.name.text.toLowerCase().includes("workshop"));
+                    break;
+                case "shows":
+                    filteredEvents = allEventsData.events.filter(event => !event.name.text.toLowerCase().includes("course") && !event.name.text.toLowerCase().includes("workshop"));
+                    break;
+                default:
+                    filteredEvents = allEventsData.events;
+                    break;
+            }
+
+            $("#event-container").empty();
+
+            var eventsByMonth = {};
+
+            filteredEvents.forEach(event => {
+                var startDate = new Date(event.start.local);
+                var monthYearKey = startDate.toLocaleString('en-US', { month: 'long', year: 'numeric' });
+
+                if (!eventsByMonth[monthYearKey]) {
+                    eventsByMonth[monthYearKey] = [];
+                }
+
+                eventsByMonth[monthYearKey].push(event);
+            });
+
+            for (var monthYear in eventsByMonth) {
+                var events = eventsByMonth[monthYear];
+
+                var $monthContainer = $("<div>").addClass("mb-4");
+                var $monthTitle = $("<h2 class='text-center'>").text(monthYear).addClass("mb-3");
+
+                $monthContainer.append($monthTitle);
+
+                events.forEach(event => {
+
+                    var name = event.name["text"];
+                    var summary = event.summary;
+                    var url = event.url;
+                    var startDate = new Date(event.start.local);
+                    var imageUrl = event.logo.original["url"];
+                    var venue = event.venue["name"];
+                    var venueAddress = event.venue.address["localized_address_display"];
+                    var isSoldOut = event.ticket_availability["is_sold_out"];
+                    var dateFormatted = startDate.toLocaleString('en-GB', {weekday: 'long',
+                                                                        day: 'numeric',
+                                                                        month: 'short',
+                                                                        year: 'numeric',
+                                                                        hour: 'numeric',
+                                                                        minute: 'numeric',
+                                                                        hour12: true,
+                                                                        });
+                                                                        
+                    var $eventDateHeader = $("<h3 class='text-center'>").text(dateFormatted).addClass("mb-2");
+                    var $eventCard = $("<div>").addClass("card mb-3");
+                    var $eventImageLink = $("<a>").attr("href", url);
+                    var $eventImage = $("<img>").addClass("card-img-top").attr("src", imageUrl);
+                    var $eventCardBody = $("<div>").addClass("card-body text-center");
+                    var $eventName = $("<h5>").addClass("card-title").text(name);
+                    var $eventDate = $("<p>").addClass("card-text").text("Date: " + dateFormatted);
+                    var $eventSummary = $("<p>").addClass("card-text").text(summary);
+                    var $eventVenue = $("<p>").addClass("card-text").text("Venue: " + venue);
+                    var $eventAddress = $("<p>").addClass("card-text").text("Address: " + venueAddress);
+                    var $ticketLink = $("<a>").addClass("btn").attr("href", url);
+
+                    if (isSoldOut) {
+                        $ticketLink.text("Sold Out").addClass("btn-danger").prop("disabled", true);
+                    } else {
+                        $ticketLink.text("Get Tickets").addClass("btn-primary");
+                    }
+
+                    $eventImageLink.append($eventImage);
+                    $eventCardBody.append($eventName, $eventDate, $eventSummary, $eventVenue, $eventAddress, $ticketLink);
+                    $eventCard.append($eventImageLink, $eventCardBody);
+                    $monthContainer.append($eventDateHeader, $eventCard);
+                });
+
+                $("#event-container").append($monthContainer);
+            }
+        }
+
+    </script>
+</body>
+</html>
