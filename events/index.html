@@ -111,93 +111,95 @@
         }
 
         function applyFilter() {
-            var selectedFilter = $("input[name='filter']:checked").val();
-            var filteredEvents;
+          var selectedFilter = $("input[name='filter']:checked").val();
+          var filteredEvents;
 
-            switch (selectedFilter) {
-                case "workshops":
-                    filteredEvents = allEventsData.events.filter(event => event.name.text.toLowerCase().includes("course") || event.name.text.toLowerCase().includes("workshop"));
-                    break;
-                case "shows":
-                    filteredEvents = allEventsData.events.filter(event => !event.name.text.toLowerCase().includes("course") && !event.name.text.toLowerCase().includes("workshop"));
-                    break;
-                default:
-                    filteredEvents = allEventsData.events;
-                    break;
-            }
+          switch (selectedFilter) {
+              case "workshops":
+                  filteredEvents = allEventsData.events.filter(event => event.name.text.toLowerCase().includes("course") || event.name.text.toLowerCase().includes("workshop"));
+                  break;
+              case "shows":
+                  filteredEvents = allEventsData.events.filter(event => !event.name.text.toLowerCase().includes("course") && !event.name.text.toLowerCase().includes("workshop"));
+                  break;
+              default:
+                  filteredEvents = allEventsData.events;
+                  break;
+          }
 
-            $("#event-container").empty();
+          $("#event-container").empty();
 
-            var eventsByMonth = {};
+          var eventsByDate = {};
 
-            filteredEvents.forEach(event => {
-                var startDate = new Date(event.start.local);
-                var monthYearKey = startDate.toLocaleString('en-US', { month: 'long', year: 'numeric' });
+          filteredEvents.forEach(event => {
+              var startDate = new Date(event.start.local);
+              var dateFormatted = startDate.toLocaleString('en-GB', {
+                  weekday: 'long',
+                  day: 'numeric',
+                  month: 'short',
+                  year: 'numeric'
+              }).replace(/,/g, '');
+              var timeFormatted = startDate.toLocaleString('en-GB', {
+                  hour: 'numeric',
+                  minute: 'numeric',
+                  hour12: true
+              });
 
-                if (!eventsByMonth[monthYearKey]) {
-                    eventsByMonth[monthYearKey] = [];
-                }
+              var dateKey = dateFormatted;
 
-                eventsByMonth[monthYearKey].push(event);
-            });
+              if (!eventsByDate[dateKey]) {
+                  eventsByDate[dateKey] = [];
+              }
 
-            for (var monthYear in eventsByMonth) {
-                var events = eventsByMonth[monthYear];
+              eventsByDate[dateKey].push({ event, timeFormatted });
+          });
 
-                var $monthContainer = $("<div>").addClass("mb-4");
-                var $monthTitle = $("<h2 class='text-center'>").text(monthYear).addClass("mb-3");
+          for (var dateKey in eventsByDate) {
+              var events = eventsByDate[dateKey];
 
-                $monthContainer.append($monthTitle);
+              var $dateContainer = $("<div>").addClass("mb-4");
+              var $dateHeader = $("<h3 class='text-center mb-3'>").text(dateKey).addClass("mb-3");
 
-                events.forEach(event => {
+              events.forEach(eventData => {
+                  var event = eventData.event;
+                  var timeFormatted = eventData.timeFormatted;
 
-                    var name = event.name["text"];
-                    var summary = event.summary;
-                    var url = event.url;
-                    var startDate = new Date(event.start.local);
-                    var imageUrl = event.logo.original["url"];
-                    var venue = event.venue["name"];
-                    var venueAddress = event.venue.address["localized_address_display"];
-                    var isSoldOut = event.ticket_availability["is_sold_out"];
-                   var timeFormatted = startDate.toLocaleString('en-US', {
-                                                                hour: 'numeric',
-                                                                minute: 'numeric',
-                                                                hour12: true
-                                                            });
-                    var dateFormatted = startDate.toLocaleString('en-GB', {
-                                                                        weekday: 'long',
-                                                                        day: 'numeric',
-                                                                        month: 'short',
-                                                                        year: 'numeric'
-                                                                    }).replace(/,/g, '');;
-                    var $eventDateHeader = $("<h3 class='text-center'>").text(dateFormatted).addClass("mb-2");
-                    var $eventCard = $("<div>").addClass("card mb-3");
-                    var $eventImageLink = $("<a>").attr("href", url);
-                    var $eventImage = $("<img>").addClass("card-img-top").attr("src", imageUrl);
-                    var $eventCardBody = $("<div>").addClass("card-body text-center");
-                    var $eventName = $("<h5>").addClass("card-title").text(name);
-                    var $eventTime = $("<p>").addClass("card-text").text("Time: " + timeFormatted);
-                    var $eventDate = $("<p>").addClass("card-text").text("Date: " + dateFormatted);
-                    var $eventSummary = $("<p>").addClass("card-text").text(summary);
-                    var $eventVenue = $("<p>").addClass("card-text").text("Venue: " + venue);
-                    var $eventAddress = $("<p>").addClass("card-text").text("Address: " + venueAddress);
-                    var $ticketLink = $("<a>").addClass("btn").attr("href", url);
+                  var name = event.name["text"];
+                  var summary = event.summary;
+                  var url = event.url;
+                  var startDate = new Date(event.start.local);
+                  var imageUrl = event.logo.original["url"];
+                  var venue = event.venue["name"];
+                  var venueAddress = event.venue.address["localized_address_display"];
+                  var isSoldOut = event.ticket_availability["is_sold_out"];
 
-                    if (isSoldOut) {
-                        $ticketLink.text("Sold Out").addClass("btn-danger").prop("disabled", true);
-                    } else {
-                        $ticketLink.text("Get Tickets").addClass("btn-primary");
-                    }
+                  var $eventCard = $("<div>").addClass("card mb-3");
+                  var $eventImageLink = $("<a>").attr("href", url);
+                  var $eventImage = $("<img>").addClass("card-img-top").attr("src", imageUrl);
+                  var $eventCardBody = $("<div>").addClass("card-body text-center");
+                  var $eventName = $("<h5>").addClass("card-title").text(name);
+                  var $eventTime = $("<p>").addClass("card-text").text("Time: " + timeFormatted);
+                  var $eventDate = $("<p>").addClass("card-text").text("Date: " + dateKey);
+                  var $eventVenue = $("<p>").addClass("card-text").text("Venue: " + venue);
+                  var $eventAddress = $("<p>").addClass("card-text").text("Address: " + venueAddress);
+                  var $ticketLink = $("<a>").addClass("btn").attr("href", url);
 
-                    $eventImageLink.append($eventImage);
-                    $eventCardBody.append($eventName, $eventTime, $eventDate, $eventSummary, $eventVenue, $eventAddress, $ticketLink);
-                    $eventCard.append($eventImageLink, $eventCardBody);
-                    $monthContainer.append($eventDateHeader, $eventCard);
-                });
+                  if (isSoldOut) {
+                      $ticketLink.text("Sold Out").addClass("btn-danger").prop("disabled", true);
+                  } else {
+                      $ticketLink.text("Get Tickets").addClass("btn-primary");
+                  }
 
-                $("#event-container").append($monthContainer);
-            }
-        }
+                  $eventImageLink.append($eventImage);
+                  $eventCardBody.append($eventName, $eventTime, $eventDate, $eventVenue, $eventAddress, $ticketLink);
+                  $eventCard.append($eventImageLink, $eventCardBody);
+                  $dateContainer.append($eventCard);
+              });
+
+              $dateContainer.prepend($dateHeader);
+              $("#event-container").append($dateContainer);
+          }
+      }
+
 
     </script>
 </body>
