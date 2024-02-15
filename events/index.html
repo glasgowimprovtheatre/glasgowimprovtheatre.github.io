@@ -159,26 +159,24 @@
                     var venue = event.venue["name"];
                     var venueAddress = event.venue.address["localized_address_display"];
                     var isSoldOut = event.ticket_availability["is_sold_out"];
-                    var dateFormatted = startDate.toLocaleString('en-GB', {weekday: 'long',
-                                                                        day: 'numeric',
-                                                                        month: 'short',
-                                                                        year: 'numeric',
-                                                                        hour: 'numeric',
-                                                                        minute: 'numeric',
-                                                                        hour12: true,
-                                                                        });
-                    var dateFormattedHeader = startDate.toLocaleString('en-GB', {
+                   var timeFormatted = startDate.toLocaleString('en-US', {
+                                                                hour: 'numeric',
+                                                                minute: 'numeric',
+                                                                hour12: true
+                                                            });
+                    var dateFormatted = startDate.toLocaleString('en-GB', {
                                                                         weekday: 'long',
                                                                         day: 'numeric',
                                                                         month: 'short',
                                                                         year: 'numeric'
-                                                                    }).replace(/(\d{1,2})(st|nd|rd|th)/, "$1<sup>$2</sup>");
-                    var $eventDateHeader = $("<h3 class='text-center'>").text(dateFormattedHeader).addClass("mb-2");
+                                                                    }).replace(/,/g, '');;
+                    var $eventDateHeader = $("<h3 class='text-center'>").text(dateFormatted).addClass("mb-2");
                     var $eventCard = $("<div>").addClass("card mb-3");
                     var $eventImageLink = $("<a>").attr("href", url);
                     var $eventImage = $("<img>").addClass("card-img-top").attr("src", imageUrl);
                     var $eventCardBody = $("<div>").addClass("card-body text-center");
                     var $eventName = $("<h5>").addClass("card-title").text(name);
+                    var $eventTime = $("<p>").addClass("card-text").text("Time: " + timeFormatted);
                     var $eventDate = $("<p>").addClass("card-text").text("Date: " + dateFormatted);
                     var $eventSummary = $("<p>").addClass("card-text").text(summary);
                     var $eventVenue = $("<p>").addClass("card-text").text("Venue: " + venue);
@@ -192,7 +190,7 @@
                     }
 
                     $eventImageLink.append($eventImage);
-                    $eventCardBody.append($eventName, $eventDate, $eventSummary, $eventVenue, $eventAddress, $ticketLink);
+                    $eventCardBody.append($eventName, $eventTime, $eventDate, $eventSummary, $eventVenue, $eventAddress, $ticketLink);
                     $eventCard.append($eventImageLink, $eventCardBody);
                     $monthContainer.append($eventDateHeader, $eventCard);
                 });
