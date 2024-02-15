@@ -167,8 +167,13 @@
                                                                         minute: 'numeric',
                                                                         hour12: true,
                                                                         });
-                                                                        
-                    var $eventDateHeader = $("<h3 class='text-center'>").text(dateFormatted).addClass("mb-2");
+                    var dateFormattedHeader = startDate.toLocaleString('en-GB', {
+                                                                        weekday: 'long',
+                                                                        day: 'numeric',
+                                                                        month: 'short',
+                                                                        year: 'numeric'
+                                                                    }).replace(/(\d{1,2})(st|nd|rd|th)/, "$1<sup>$2</sup>");
+                    var $eventDateHeader = $("<h3 class='text-center'>").text(dateFormattedHeader).addClass("mb-2");
                     var $eventCard = $("<div>").addClass("card mb-3");
                     var $eventImageLink = $("<a>").attr("href", url);
                     var $eventImage = $("<img>").addClass("card-img-top").attr("src", imageUrl);
