@@ -94,7 +94,7 @@
         });
         
         function GetShows() {
-            var url = "https://www.eventbriteapi.com/v3/organizations/568772580943/events/?token=H2CWEK4JO55AWX2WB666&time_filter=current_future&expand=ticket_availability,venue";
+            var url = "https://www.eventbriteapi.com/v3/organizations/568772580943/events/?token=H2CWEK4JO55AWX2WB666&time_filter=current_future&expand=ticket_availability,venue&status=live";
 
             $.get(url, function (data) {
                 console.log(data);
