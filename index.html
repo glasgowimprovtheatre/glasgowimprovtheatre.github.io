@@ -1,20 +1,12 @@
 ---
 layout: default
+title: 
 ---
 
-<div class="home">
-
-  <h1>Posts </h1>
-
-  <ul class="posts">
-    {% for post in site.posts %}
-      <li>
-        <span class="post-date">{{ post.date | date: "%b %-d, %Y" }}</span>
-        <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-      </li>
-    {% endfor %}
-  </ul>
-
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
-
+<h1 class="text-center">Welcome To The Glasgow Improv Theatre!</h1>
+<br />
+<div class="text-center">
+    <a href="{{site.url}}/events#workshops" class="btn btn-primary btn-lg">Take a class</a>
+    <br /><br />
+    <a href="{{site.url}}/events#shows" class="btn btn-primary btn-lg">What's on?</a>
 </div>
