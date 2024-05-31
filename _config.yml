@@ -3,7 +3,7 @@ email: glasgowimprovtheatre@gmail.com
 description: "Glasgow Improv Theatre - The GIT. Improv classes, workshops, and shows in Glasgow, Scotland."
 
 baseurl: "" # the subpath of your site, e.g. /blog
-url: http://improvglasgow.co.uk/ # the base hostname & protocol for your site, e.g. http://example.com
+url: http://improvglasgow.co.uk # the base hostname & protocol for your site, e.g. http://example.com
 
 mailing-list-link: https://dashboard.mailerlite.com/forms/402795/85431937313801728/share
 
