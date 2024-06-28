@@ -173,7 +173,7 @@ title: Events
                   var isSoldOut = event.ticket_availability["is_sold_out"];
 
                   var $eventCard = $("<div>").addClass("card mb-3 col-md-6");
-                  var $eventImageLink = $("<a>").attr("href", url);
+                  var $eventImageLink = $("<a>").attr("href", url).attr("target", "_blank");
                   var $eventImage = $("<img>").addClass("card-img-top").attr("src", imageUrl);
                   var $eventCardBody = $("<div>").addClass("card-body text-center");
                   var $eventName = $("<h5>").addClass("card-title").text(name);
@@ -182,7 +182,7 @@ title: Events
                   var $eventDate = $("<p>").addClass("card-text").text("Date: " + dateKey);
                   var $eventVenue = $("<p>").addClass("card-text").text("Venue: " + venue);
                   var $eventAddress = $("<p>").addClass("card-text").text("Address: " + venueAddress);
-                  var $ticketLink = $("<a>").addClass("btn").attr("href", url);
+                  var $ticketLink = $("<a>").addClass("btn").attr("href", url).attr("target", "_blank");
 
                   if (isSoldOut) {
                       $ticketLink.text("Sold Out").addClass("btn-danger").prop("disabled", true);
