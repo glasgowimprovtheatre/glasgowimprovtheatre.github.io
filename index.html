@@ -10,3 +10,85 @@ title:
     <br /><br />
     <a href="{{site.url}}/events#shows" class="btn btn-primary btn-lg">What's on?</a>
 </div>
+<br /><br />
+<div class="mb-4 d-flex flex-wrap justify-content-center">
+    <div id="divNextShow" class="card mb-3 col-md-3">
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+
+    var allEventsData;
+
+    $(function() {
+        GetEvents();
+    });
+    
+    function GetEvents() {
+        var url = "https://www.eventbriteapi.com/v3/organizations/568772580943/events/?token=H2CWEK4JO55AWX2WB666&time_filter=current_future&expand=ticket_availability,venue&status=live";
+
+        $.get(url, function (data) {
+            allEventsData = data;
+            getNextEvents();
+        });
+    }
+    
+    function getNextEvents() {
+
+        var workshops = allEventsData.events.filter(event => event.name.text.toLowerCase().includes("course") || event.name.text.toLowerCase().includes("workshop"));
+        var nextWorkshop = workshops[0];
+
+        shows = allEventsData.events.filter(event => !event.name.text.toLowerCase().includes("course") && !event.name.text.toLowerCase().includes("workshop") && !event.name.text.toLowerCase().includes("grad"));
+        var nextShow = shows[0];
+
+        displayNextShow(nextShow);
+    }
+
+    function displayNextShow(event){
+        var startDate = new Date(event.start.local);
+        var dateFormatted = startDate.toLocaleString('en-GB', {
+            weekday: 'long',
+            day: 'numeric',
+            month: 'short',
+            year: 'numeric'
+        }).replace(/,/g, '');
+        var timeFormatted = startDate.toLocaleString('en-GB', {
+            hour: 'numeric',
+            minute: 'numeric',
+            hour12: true
+        });
+
+        var name = event.name["text"];
+        var summary = event.summary;
+        var url = event.url;
+        var startDate = new Date(event.start.local);
+        var imageUrl = event.logo.original["url"];
+        var venue = event.venue["name"];
+        var venueAddress = event.venue.address["localized_address_display"];
+        var isSoldOut = event.ticket_availability["is_sold_out"];
+
+        var $eventCard = $("<div>").addClass("card mb-3 col-md-6");
+        var $eventImageLink = $("<a>").attr("href", url).attr("target", "_blank");
+        var $eventImage = $("<img>").addClass("card-img-top").attr("src", imageUrl);
+        var $eventCardBody = $("<div>").addClass("card-body text-center");
+        var $eventName = $("<h5>").addClass("card-title").text(name);
+        var $eventSummary = $("<p>").addClass("card-text").text(summary);
+            var $eventDate = $("<p>").addClass("card-text").text("Date: " + dateFormatted);
+        var $eventTime = $("<p>").addClass("card-text").text("Time: " + timeFormatted);
+        var $eventVenue = $("<p>").addClass("card-text").text("Venue: " + venue);
+        var $eventAddress = $("<p>").addClass("card-text").text("Address: " + venueAddress);
+        var $ticketLink = $("<a>").addClass("btn").attr("href", url).attr("target", "_blank");
+
+        if (isSoldOut) {
+            $ticketLink.text("Sold Out").addClass("btn-danger").prop("disabled", true);
+        } else {
+            $ticketLink.text("Get Tickets").addClass("btn-primary");
+        }
+
+        $eventImageLink.append($eventImage);
+        $eventCardBody.append($eventName, $eventSummary, $eventDate, $eventTime, $eventVenue, $eventAddress, $ticketLink);
+        $("#divNextShow").append($eventImageLink, $eventCardBody);
+    }
+</script>
