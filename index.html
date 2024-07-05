@@ -6,11 +6,30 @@ title:
 <h1 class="text-center">Welcome To The Glasgow Improv Theatre!</h1>
 <br />
 <div class="text-center">
-    <a href="{{site.url}}/events#workshops" class="btn btn-primary btn-lg">Take a class</a>
-    <br /><br />
-    <a href="{{site.url}}/events#shows" class="btn btn-primary btn-lg">What's on?</a>
+    <a href="{{site.url}}/events#workshops" class="btn btn-primary btn-lg me-3">Classes</a>
+    <a href="{{site.url}}/events#shows" class="btn btn-primary btn-lg ms-3">Shows</a>
 </div>
 <br /><br />
+
+<div class="mb-4 d-flex flex-wrap justify-content-center">
+    <div class="card mb-3 col-md-3">
+        <div class="carousel slide carousel-dark" data-bs-ride="carousel" id="carousel">
+            <div class="carousel-indicators">
+            </div>
+            <div class="carousel-inner" id="carouselItems" style="min-height: 400px;">
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev" style="margin-top: 185px;">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next" style="margin-top: 185px;">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+</div>
+
 <div class="mb-4 d-flex flex-wrap justify-content-center">
     <div id="divNextShow" class="card mb-3 col-md-3">
     </div>
@@ -37,58 +56,76 @@ title:
     
     function getNextEvents() {
 
-        var workshops = allEventsData.events.filter(event => event.name.text.toLowerCase().includes("course") || event.name.text.toLowerCase().includes("workshop"));
+        var workshops = allEventsData.events.filter(event => event.name.text.toLowerCase().includes("course") || event.name.text.toLowerCase().includes("workshop") && !event.ticket_availability.is_sold_out);
         var nextWorkshop = workshops[0];
 
-        shows = allEventsData.events.filter(event => !event.name.text.toLowerCase().includes("course") && !event.name.text.toLowerCase().includes("workshop") && !event.name.text.toLowerCase().includes("grad"));
+        shows = allEventsData.events.filter(event => !event.name.text.toLowerCase().includes("course") && !event.name.text.toLowerCase().includes("workshop") && !event.name.text.toLowerCase().includes("grad") && !event.ticket_availability.is_sold_out);
         var nextShow = shows[0];
 
-        displayNextShow(nextShow);
+        displayNextShowCarousel(nextShow);
+        displayNextShowCarousel(nextWorkshop);
+
+        /*
+        allEventsData.events.forEach((event, index) => {
+        });*/
     }
 
-    function displayNextShow(event){
-        var startDate = new Date(event.start.local);
-        var dateFormatted = startDate.toLocaleString('en-GB', {
-            weekday: 'long',
-            day: 'numeric',
-            month: 'short',
-            year: 'numeric'
-        }).replace(/,/g, '');
-        var timeFormatted = startDate.toLocaleString('en-GB', {
-            hour: 'numeric',
-            minute: 'numeric',
-            hour12: true
-        });
 
-        var name = event.name["text"];
-        var summary = event.summary;
-        var url = event.url;
-        var startDate = new Date(event.start.local);
-        var imageUrl = event.logo.original["url"];
-        var venue = event.venue["name"];
-        var venueAddress = event.venue.address["localized_address_display"];
-        var isSoldOut = event.ticket_availability["is_sold_out"];
+    function displayNextShowCarousel(event) {
+    if (!event) return;
 
-        var $eventCard = $("<div>").addClass("card mb-3 col-md-6");
-        var $eventImageLink = $("<a>").attr("href", url).attr("target", "_blank");
-        var $eventImage = $("<img>").addClass("card-img-top").attr("src", imageUrl);
-        var $eventCardBody = $("<div>").addClass("card-body text-center");
-        var $eventName = $("<h5>").addClass("card-title").text(name);
-        var $eventSummary = $("<p>").addClass("card-text").text(summary);
-            var $eventDate = $("<p>").addClass("card-text").text("Date: " + dateFormatted);
-        var $eventTime = $("<p>").addClass("card-text").text("Time: " + timeFormatted);
-        var $eventVenue = $("<p>").addClass("card-text").text("Venue: " + venue);
-        var $eventAddress = $("<p>").addClass("card-text").text("Address: " + venueAddress);
-        var $ticketLink = $("<a>").addClass("btn").attr("href", url).attr("target", "_blank");
+    var startDate = new Date(event.start.local);
+    var dateFormatted = startDate.toLocaleString('en-GB', {
+        weekday: 'long',
+        day: 'numeric',
+        month: 'short',
+        year: 'numeric'
+    }).replace(/,/g, '');
+    var timeFormatted = startDate.toLocaleString('en-GB', {
+        hour: 'numeric',
+        minute: 'numeric',
+        hour12: true
+    });
 
-        if (isSoldOut) {
-            $ticketLink.text("Sold Out").addClass("btn-danger").prop("disabled", true);
-        } else {
-            $ticketLink.text("Get Tickets").addClass("btn-primary");
-        }
+    var name = event.name.text;
+    var url = event.url;
+    var imageUrl = event.logo.original.url;
+    var isSoldOut = event.ticket_availability.is_sold_out;
 
-        $eventImageLink.append($eventImage);
-        $eventCardBody.append($eventName, $eventSummary, $eventDate, $eventTime, $eventVenue, $eventAddress, $ticketLink);
-        $("#divNextShow").append($eventImageLink, $eventCardBody);
+    var $carouselItem = $("<div>").addClass("carousel-item");
+    var $eventImageLink = $("<a>").attr("href", url).attr("target", "_blank");
+    var $eventImage = $("<img>").addClass("card-img-top").attr("src", imageUrl).attr("alt", name);
+    var $eventCardBody = $("<div>").addClass("card-body text-center px-2");
+    var $eventName = $("<h6>").addClass("card-title").text(name);
+    var $eventDateAndTime = $("<p>").addClass("card-text").text(dateFormatted + " at " + timeFormatted);
+    var $ticketLink = $("<a>").addClass("btn mb-4").attr("href", url).attr("target", "_blank");
+
+    if (isSoldOut) {
+        $ticketLink.text("Sold Out").addClass("btn-danger").prop("disabled", true);
+    } else {
+        $ticketLink.text("Get Tickets").addClass("btn-primary");
     }
+
+    $eventImageLink.append($eventImage);
+    $eventCardBody.append($eventName, $eventDateAndTime, $ticketLink);
+    $carouselItem.append($eventImageLink, $eventCardBody);
+
+    $("#carouselItems").append($carouselItem);
+
+    var slideIndex = $("#carouselItems .carousel-item").length - 1;
+    var $indicator = $("<button>")
+        .attr("type", "button")
+        .attr("data-bs-target", "#carousel")
+        .attr("data-bs-slide-to", slideIndex)
+        .attr("aria-label", "Slide " + (slideIndex + 1));
+
+    if (slideIndex === 0) {
+        $carouselItem.addClass("active");
+        $indicator.addClass("active").attr("aria-current", "true");
+    }
+
+    $(".carousel-indicators").append($indicator);
+}
+
+
 </script>
