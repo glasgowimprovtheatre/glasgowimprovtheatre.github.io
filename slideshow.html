@@ -1,0 +1,123 @@
+---
+layout: slideshow-layout
+title: Slideshow
+---
+
+<div class="mb-4 d-flex flex-wrap justify-content-center" id="carouselContainer" style="display: none !important;">
+    <h1>Coming soon to the Glasgow Improv Theatre!</h1>
+    <div class="card mb-3 col-md-6">
+        <div class="carousel slide carousel-dark" data-bs-ride="carousel" id="carousel">
+            <div class="carousel-indicators">
+            </div>
+            <div class="carousel-inner" id="carouselItems" style="min-height: 650px;">
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev" style="/*margin-top: 185px;*/">
+                <span class="carousel-control-prev-icon" aria-hidden="true" style="display: none;"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next" style="/*margin-top: 185px;*/">
+                <span class="carousel-control-next-icon" aria-hidden="true" style="display: none;"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+    <h2>Follow us and tag your photos @improvglasgow</h2>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+
+    var allEventsData;
+
+    $(function() {
+        GetEvents();
+    });
+    
+    function GetEvents() {
+        var url = "https://www.eventbriteapi.com/v3/organizations/568772580943/events/?token=H2CWEK4JO55AWX2WB666&time_filter=current_future&expand=ticket_availability,venue&status=live";
+
+        $.get(url, function (data) {
+            allEventsData = data;
+            getNextEvents();
+        });
+    }
+    
+    function getNextEvents() {
+        for(let i=0; i < 10; i++ )
+        {
+            displayNextShowCarousel(allEventsData.events[i]);
+        }
+
+
+        $("#carouselContainer").show("slow");
+    }
+
+
+    function displayNextShowCarousel(event) {
+        if (!event) return;
+
+
+        var startDate = new Date(event.start.local);
+        var dateFormatted = startDate.toLocaleString('en-GB', {
+            weekday: 'long',
+            day: 'numeric',
+            month: 'short',
+            year: 'numeric'
+        }).replace(/,/g, '');
+        var timeFormatted = startDate.toLocaleString('en-GB', {
+            hour: 'numeric',
+            minute: 'numeric',
+            hour12: true
+        });
+
+        var name = event.name.text;
+        var url = event.url;
+        var imageUrl = event.logo.original.url;
+        var isSoldOut = event.ticket_availability.is_sold_out;
+        
+        var summary = event.summary;
+        var url = event.url;
+        var startDate = new Date(event.start.local);
+        var venue = event.venue["name"];
+        var venueAddress = event.venue.address["localized_address_display"];
+
+        var $carouselItem = $("<div>").addClass("carousel-item");
+        var $eventImageLink = $("<a>").attr("href", url).attr("target", "_blank");
+        var $eventImage = $("<img>").addClass("card-img-top").attr("src", imageUrl).attr("alt", name);
+        var $eventCardBody = $("<div>").addClass("card-body text-center px-2");
+        var $eventName = $("<h3>").addClass("card-title").text(name);
+        var $strongText = $("<strong>").text(dateFormatted + " at " + timeFormatted);
+        var $eventDateAndTime = $("<h5>").addClass("card-text mb-3 text-danger").append($strongText);
+        var $eventSummary = $("<h5>").addClass("card-text").text(summary);
+        var $ticketLink = $("<a>").addClass("btn mb-4").attr("href", url).attr("target", "_blank");
+
+        if (isSoldOut) {
+            $ticketLink.text("Sold Out").addClass("btn-danger").prop("disabled", true);
+        } else {
+            $ticketLink.text("Get Tickets").addClass("btn-primary");
+        }
+
+        $eventImageLink.append($eventImage);
+        $eventCardBody.append($eventName, $eventDateAndTime, $eventSummary);
+        $carouselItem.append($eventImageLink, $eventCardBody);
+
+        $("#carouselItems").append($carouselItem);
+
+        var slideIndex = $("#carouselItems .carousel-item").length - 1;
+        var $indicator = $("<button>")
+            .attr("type", "button")
+            .attr("data-bs-target", "#carousel")
+            .attr("data-bs-slide-to", slideIndex)
+            .attr("aria-label", "Slide " + (slideIndex + 1));
+
+        if (slideIndex === 0) {
+            $carouselItem.addClass("active");
+            $indicator.addClass("active").attr("aria-current", "true");
+        }
+
+        $(".carousel-indicators").append($indicator);
+    }
+
+
+</script>
