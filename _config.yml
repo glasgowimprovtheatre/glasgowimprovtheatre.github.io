@@ -60,6 +60,29 @@ teams:
       - title: instagram
         url: http://instagram.com/yerdaimprov
         
+  - name: F.L.U.S.H.
+    icon: fa-water
+    description: |
+      <p>
+          GIT House team at Glasgow Harold Night
+      </p>
+    socials: 
+      - title: instagram
+        url: http://instagram.com/flushprov
+
+  - name: Raintown
+    icon: fa-cloud-rain
+    description: |
+      <p>
+          GIT House team at Glasgow Harold Night
+      </p>
+    socials: 
+      - title: instagram
+        url: http://instagram.com/raintownimprov
+
+
+former-teams:
+
   - name: Family Dinner
     icon: fa-utensils
     description: |
@@ -86,8 +109,6 @@ teams:
       - title: instagram
         url: http://instagram.com/ghostfishimprov
 
-
-former-teams:
   - name: One Big Jacket
     icon: fa-tshirt
     description: |
