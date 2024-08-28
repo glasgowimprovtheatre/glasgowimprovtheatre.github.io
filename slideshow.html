@@ -114,8 +114,8 @@ title: Slideshow
         var $eventCardBody = $("<div>").addClass("card-body text-center px-2");
         var $eventName = $("<h2>").addClass("card-title").text(name);
         var $strongText = $("<strong>").text(dateFormatted + " at " + timeFormatted);
-        var $eventDateAndTime = $("<h4>").addClass("card-text mb-3 text-danger").append($strongText);
-        var $eventSummary = $("<h4>").addClass("card-text").text(summary);
+        var $eventDateAndTime = $("<h4>").addClass("card-text text-danger").append($strongText);
+        var $eventSummary = $("<p>").addClass("card-text lead").text(summary);
         var $ticketLink = $("<a>").addClass("btn mb-4").attr("href", url).attr("target", "_blank");
 
         if (isSoldOut) {
