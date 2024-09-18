@@ -2,6 +2,14 @@
 layout: slideshow-layout
 title: Slideshow
 ---
+<style>
+    .carousel-images img {
+        height: 300px;  
+        object-fit: cover;  
+        width: 100%;  
+        border-radius: 15px;
+    }
+</style>
 <div id="wholePage" style="display: none !important;">
     <div class="text-center">
     <h1>Coming soon to the Glasgow Improv Theatre!</h1>
@@ -9,11 +17,27 @@ title: Slideshow
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-3 text-center">
-                <br /><br /><br /><br />
+                <br /><br />
                 <h3>Visit our website:</h3>
                 <div>
                     <img src="/img/qr-code-website.png" class="" height="150px">
                 </div>
+
+                <div id="carouselLeft" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner carousel-images" id="carousel-images-left">
+                      <!-- Images will be inserted here dynamically -->
+                    </div>
+                  
+                    <!-- Next and Previous buttons -->
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselLeft" data-bs-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true" style="display: none;"></span>
+                      <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselLeft" data-bs-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true" style="display: none;"></span>
+                      <span class="visually-hidden">Next</span>
+                    </button>
+                  </div>
             </div>
             <div class="col-md-6 d-flex justify-content-center" id="carouselContainer" style="display: none !important;">
                 <div class="card">
@@ -35,11 +59,26 @@ title: Slideshow
             </div>
 
             <div class="col-md-3 text-center">
-                <br /><br /><br /><br />
+                <br /><br />
                 <h3>Mailing list signup:</h3>
                 <div>
                     <img src="/img/qr-code-mailerlite.png" class="" height="150px">
                 </div>
+                <div id="carouselRight" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner carousel-images" id="carousel-images-right">
+                      <!-- Images will be inserted here dynamically -->
+                    </div>
+                  
+                    <!-- Next and Previous buttons -->
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselRight" data-bs-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true" style="display: none;"></span>
+                      <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselRight" data-bs-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true" style="display: none;"></span>
+                      <span class="visually-hidden">Next</span>
+                    </button>
+                  </div>
             </div>
         </div>
     </div> 
@@ -145,5 +184,56 @@ title: Slideshow
         $(".carousel-indicators").append($indicator);
     }
 
+</script>
 
+<script>
+    const maxImages = 7; 
+    const imageFolder = 'img/shows/';
+    const slideshowSpeed = 10000; 
+
+    let images = [];
+    for (let i = 1; i <= maxImages; i++) {
+        images.push(i + '.jpg');
+    }
+
+    function shuffle(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    }
+
+    function displayCarouselImages(carouselId, imageArray) {
+        const carouselInner = document.getElementById(carouselId);
+        imageArray.forEach((image, index) => {
+            const div = document.createElement('div');
+            div.classList.add('carousel-item');
+            if (index === 0) {
+                div.classList.add('active'); 
+            }
+
+            const imgElement = document.createElement('img');
+            imgElement.src = imageFolder + image;
+            imgElement.classList.add('d-block', 'w-100', 'rounded');
+
+            div.appendChild(imgElement);
+            carouselInner.appendChild(div);
+        });
+    }
+
+    const shuffledImagesLeft = shuffle([...images]); 
+    const shuffledImagesRight = shuffle([...images]); 
+
+    document.addEventListener('DOMContentLoaded', function() {
+        displayCarouselImages('carousel-images-left', shuffledImagesLeft);
+        displayCarouselImages('carousel-images-right', shuffledImagesRight);
+
+        const leftCarousel = new bootstrap.Carousel(document.getElementById('carouselLeft'), {
+            interval: slideshowSpeed
+        });
+        const rightCarousel = new bootstrap.Carousel(document.getElementById('carouselRight'), {
+            interval: slideshowSpeed
+        });
+    });
 </script>
