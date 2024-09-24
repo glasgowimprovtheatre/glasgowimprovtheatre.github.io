@@ -148,6 +148,7 @@ title: Slideshow
 
         var carouselSpeed = "15000";
         var $carouselItem = $("<div>").addClass("carousel-item").attr("data-bs-interval", carouselSpeed);
+        var $eventImageContainer = $("<div>").addClass("position-relative");
         var $eventImageLink = $("<a>").attr("href", url).attr("target", "_blank");
         var $eventImage = $("<img>").addClass("card-img-top").attr("src", imageUrl).attr("alt", name);
         var $eventCardBody = $("<div>").addClass("card-body text-center px-2");
@@ -155,17 +156,28 @@ title: Slideshow
         var $strongText = $("<strong>").text(dateFormatted + " at " + timeFormatted);
         var $eventDateAndTime = $("<h4>").addClass("card-text text-danger").append($strongText);
         var $eventSummary = $("<p>").addClass("card-text lead").text(summary);
-        var $ticketLink = $("<a>").addClass("btn mb-4").attr("href", url).attr("target", "_blank");
 
-        if (isSoldOut) {
-            $ticketLink.text("Sold Out").addClass("btn-danger").prop("disabled", true);
-        } else {
-            $ticketLink.text("Get Tickets").addClass("btn-primary");
-        }
+        // Sold Out button
+        var $ticketLink = $("<a>").addClass("btn btn-danger sold-out-button")
+            .attr("href", url)
+            .attr("target", "_blank")
+            .text("Sold Out")
+            .prop("disabled", true)
+            .css({
+                "position": "absolute",    
+                "top": "10px",             
+                "right": "10px"            
+            });
 
         $eventImageLink.append($eventImage);
+        $eventImageContainer.append($eventImageLink);
+
+        if (isSoldOut) {
+            $eventImageContainer.append($ticketLink); 
+        }
+
         $eventCardBody.append($eventName, $eventDateAndTime, $eventSummary);
-        $carouselItem.append($eventImageLink, $eventCardBody);
+        $carouselItem.append($eventImageContainer, $eventCardBody);
 
         $("#carouselItems").append($carouselItem);
 
@@ -182,6 +194,7 @@ title: Slideshow
         }
 
         $(".carousel-indicators").append($indicator);
+
     }
 
 </script>
