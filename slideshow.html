@@ -146,7 +146,7 @@ title: Slideshow
         var venue = event.venue["name"];
         var venueAddress = event.venue.address["localized_address_display"];
 
-        var carouselSpeed = "10000";
+        var carouselSpeed = "15000";
         var $carouselItem = $("<div>").addClass("carousel-item").attr("data-bs-interval", carouselSpeed);
         var $eventImageLink = $("<a>").attr("href", url).attr("target", "_blank");
         var $eventImage = $("<img>").addClass("card-img-top").attr("src", imageUrl).attr("alt", name);
@@ -189,7 +189,7 @@ title: Slideshow
 <script>
     const maxImages = 74; 
     const imageFolder = 'img/shows/';
-    const slideshowSpeed = 10000; 
+    const slideshowSpeed = 30000; 
 
     let images = [];
     for (let i = 1; i <= maxImages; i++) {
