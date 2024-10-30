@@ -21,6 +21,35 @@ social:
 #  - title: twitch
 #    url: http://twitch.tv/improvglasgow
 
+teachers:
+  - name: Martin
+    headshot: martin1.jpg
+    description: |
+      <p>
+          Martin James is a co-founder of the Glasgow Improv Theatre. He studied improv at the Upright Citizens Brigade Theatre in Los Angeles. Martin started Glasgow Harold Night in 2016 where it has run every month pausing only for global pandemics. As part of Couch, Martin is a house team performer in Couch Surf, Glasgow Harold Night, Improv Fucktown and the Edinburgh Fringe show Improv Cage Match. He performed two shows at DCM 20 in New York, one wearing an adult diaper.
+      </p>
+
+  - name: John
+    headshot: john2.jpg
+    description: |
+      <p>
+          John McInnes has been doing longform improv since 2014 and loves it, particularly the longform sturcture "The Harold". He's learned from Carleen MacDermid, Will Hines, Billy Merritt, Alan Starzinski, Julie Brister, Ari Voukydis...and many more. In 2016 he co-founded Bristol's Kitchen Rules Theatre, running workshops and its popular show "Parents Basement". He coached or was a member of all the cool teams in Bristol from 2016-2022 and directed the non-comedic longform "The Impressionistic Horror". He has performed at the Del Close Marathon, Amsterdam Improv Marathon, Hoopla Improv Marathon and the Robin Hood International Improv Festival (not a marathon). He is a member of Couch and co-runs Improv Cagematch at the Edinburgh Fringe Festival.
+      </p>
+
+  - name: Jeff
+    headshot: jeff1.jpg
+    description: |
+      <p>
+          Jeffrey Khan has nearly a decade of improv experience including training at the Free Association in London where he also performed on the team Minority Report. He performs regularly with Couch at The Glasgow Improv Theatre, the Edinburgh International Improv Festival, and the Edinburgh Fringe Festival.
+      </p>
+
+  - name: Karen
+    headshot: karen1.jpg
+    description: |
+      <p>
+          Karen Davidson has been a fixture in the Glasgow improv scene for almost 5 years. Having trained with the Glasgow Improv Theatre, the Upright Citizens Brigade and the World’s Greatest Improv School she has been taught and inspired by some of the best improv teachers around. She has appeared in the legendary podcast Improv4Humans, with Matt Besser of UCB, and has performed in events such as Edinburgh Fringe, Glasgow International Comedy Festival, Edinburgh International Improv Festival, Robin Hood Improv Festival and others. She can be found performing at the Old Hairdressers on the third Tuesday of every month with her team Yer Da.
+      </p>
+
 teams:
   - name: Couch
     icon: fa-couch
