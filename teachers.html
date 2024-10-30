@@ -3,42 +3,37 @@ layout: default
 title: Teachers
 ---
 <div class="container">
-            
     <div class="row justify-content-center">
-        <div class="col-md-6">
+        <div class="col-md-8 text-center">
+            <h1 class="display-4 mb-4">Teachers</h1>
+            <div class="mb-4">
+                <span class="fa-stack fa-4x">
+                    <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                    <i class="fa fa-graduation-cap fa-stack-1x fa-inverse"></i>
+                </span>
+            </div>
+        </div>
 
-            <div >
-                <div class="text-center">
-                    <h1>Teachers</h1>
-                    
-                    <div class="text-center">
-                        <span class="fa-stack fa-4x">
-                            <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                            <i class="fa fa-graduation-cap fa-stack-1x fa-inverse"></i>
-                        </span>
+        {% for teacher in site.teachers %}
+        <div class="row justify-content-center mb-2">
+            <div class="col-12 col-md-6 mb-4">
+                <div class="card h-100 border-0 bg-light shadow-sm">
+                    <div class="card-body text-center">
+                        <h3 class="card-title">{{ teacher.name }}</h3>
+                        <div class="row justify-content-center mb-3">
+                            <div class="col-md-8">
+                                <img src="img/headshots/{{ teacher.headshot }}" class="img-fluid rounded shadow" alt="{{ teacher.name }}">
+                            </div>
+                            <!--
+                            <div class="overflow-hidden rounded-circle mx-auto" style="width: 300px; height: 300px;">
+                                <img src="img/headshots/{{ teacher.headshot }}" class="img-fluid w-100 h-100" style="object-fit: cover;" alt="{{ teacher.name }}">
+                            </div>-->
+                        </div>
+                        <p class="card-text">{{ teacher.description }}</p>
                     </div>
-                    <br />
                 </div>
             </div>
-
-            {% for teacher in site.teachers %}
-                    
-                <div  class="text-center mb-3">
-
-                    <h3>{{ teacher.name }}</h3>
-                    <div class="row justify-content-center">
-                    <div class="col-md-8">
-                        <img src="img/headshots/{{teacher.headshot}}" class="img-fluid" />
-                    </div>
-                    </div>
-                </div>
-            
-                <div class="">
-                    {{ teacher.description }}
-                </div>
-                <br /> <br />
-            {% endfor %}
-
         </div>
+        {% endfor %}
     </div>
 </div>
