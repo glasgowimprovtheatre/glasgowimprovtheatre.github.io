@@ -42,77 +42,78 @@ title: Teams
             </div>
             <br /> <br />
             {% for team in site.teams %}
-                    
-                <div>
-                    <div  class="text-center">
-                        <span class="fa-stack fa-4x">
-                            <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                            <i class="fa {{ team.icon }} fa-stack-1x fa-inverse"></i>
-                        </span>
-
-                        <h3>{{ team.name }}</h3>
-                        <div class="d-flex justify-content-center">
-                            <ul class="list-group list-group-horizontal">
-                                {% for social in team.socials %}
-                                    <a href="{{ social.url }}" target="_blank">
-                                        <li class="list-group-item">
-                                            <i class="fab fa-{{ social.title }} text-primary"></i>
-                                        </li>
-                                    </a>
-                                {% endfor %}
-                            </ul>
+                <div class="row justify-content-center mb-2">
+                    <div class="col-12 col-md-8 mb-4">
+                        <div class="card h-100 border-0 bg-light shadow-sm">
+                            <div class="card-body text-center">
+                                <h3 class="card-title">{{ team.name }}</h3>
+                                <div class="row justify-content-center mb-3">
+                                    <div class="col-md-8">
+                                        <!-- Displaying team icon inside a circle, similar to a headshot style -->
+                                        <span class="fa-stack fa-4x mb-3">
+                                            <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                                            <i class="fa {{ team.icon }} fa-stack-1x fa-inverse"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-flex justify-content-center mb-3">
+                                    <ul class="list-group list-group-horizontal">
+                                        {% for social in team.socials %}
+                                            <a href="{{ social.url }}" target="_blank">
+                                                <li class="list-group-item border-0">
+                                                    <i class="fab fa-{{ social.title }} text-primary"></i>
+                                                </li>
+                                            </a>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                                <p class="card-text">{{ team.description }}</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <br />
-            
-            <div>
-                <div>
-                    {{ team.description }}
-                </div>
-            </div>
-            <br /> <br />
             {% endfor %}
 
-            <div>
-                <div class="text-center">
-                    <h2>Former GIT House Teams (2022-2024)</h3>
-                </div>
+            <!-- Former Teams Section -->
+            <div class="text-center">
+                <h2>Former GIT House Teams (2022-2024)</h2>
             </div>
-
             <br />
+
             {% for team in site.former-teams %}
-                    
-                <div>
-                    <div class="text-center">
-                        <span class="fa-stack fa-4x">
-                            <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                            <i class="fa {{ team.icon }} fa-stack-1x fa-inverse"></i>
-                        </span>
-
-                        <h3>{{ team.name }}</h3>
-                        <div class="d-flex justify-content-center">
-                            <ul class="list-group list-group-horizontal">
-                                {% for social in team.socials %}
-                                    <a href="{{ social.url }}" target="_blank">
-                                        <li class="list-group-item">
-                                            <i class="fab fa-{{ social.title }} text-primary"></i>
-                                        </li>
-                                    </a>
-                                {% endfor %}
-                            </ul>
+                <div class="row justify-content-center mb-2">
+                    <div class="col-12 col-md-8 mb-4">
+                        <div class="card h-100 border-0 bg-light shadow-sm">
+                            <div class="card-body text-center">
+                                <h3 class="card-title">{{ team.name }}</h3>
+                                <div class="row justify-content-center mb-3">
+                                    <div class="col-md-8">
+                                        <span class="fa-stack fa-4x mb-3">
+                                            <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                                            <i class="fa {{ team.icon }} fa-stack-1x fa-inverse"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-flex justify-content-center mb-3">
+                                    <ul class="list-group list-group-horizontal">
+                                        {% for social in team.socials %}
+                                            <a href="{{ social.url }}" target="_blank">
+                                                <li class="list-group-item border-0">
+                                                    <i class="fab fa-{{ social.title }} text-primary"></i>
+                                                </li>
+                                            </a>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                                <p class="card-text">{{ team.description }}</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <br />
-            
-            <div>
-                <div>
-                    {{ team.description }}
-                </div>
-            </div>
-            <br />
             {% endfor %}
+
         </div>
     </div>
 </div>
