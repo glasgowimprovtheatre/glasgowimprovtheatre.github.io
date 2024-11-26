@@ -191,7 +191,7 @@ events:
   - event-name: "Pretty Thistle (An Improv Show) Glasgow Comedy Fest"
     event-date: "2025-03-18"
     event-time: "20:00"
-    event-url: "https://www.glasgowcomedyfestival.com/performances/an-improv-show-glasgow-improv-theatre-house-teams/"
+    event-url: "https://www.glasgowcomedyfestival.com/performances/pretty-thistle-an-improv-show-glasgow-improv-theatre/"
     event-image: "https://www.glasgowcomedyfestival.com/wp-content/uploads/2024/11/11-18-2024-114510-4413.jpg"
     is-sold-out: false
     event-summary: "Pretty Thistle is an improv show from Martin James & John McInnes from the Glasgow Improv Theatre."
