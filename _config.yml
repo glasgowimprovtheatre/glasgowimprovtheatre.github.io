@@ -176,3 +176,54 @@ former-teams:
     socials: 
       - title: instagram
         url: http://instagram.com/presidentdogimprov
+
+events:
+  - event-name: "An Improv Show (Glasgow Improv Theatre House Teams) Glasgow Comedy Fest"
+    event-date: "2025-03-18"
+    event-time: "18:30"
+    event-url: "https://www.glasgowcomedyfestival.com/performances/an-improv-show-glasgow-improv-theatre-house-teams/"
+    event-image: "https://www.glasgowcomedyfestival.com/wp-content/uploads/2024/11/11-20-2024-104835-8907.jpg"
+    is-sold-out: false
+    event-summary: "Two house teams from the Glasgow Improv Theatre create a comedy sketch show based on your suggestions!"
+    venue-name: "Glasgow Improv Theatre"
+    venue-address: "12 Renfield Street, Glasgow, G2 5AR"
+
+  - event-name: "Pretty Thistle (An Improv Show) Glasgow Comedy Fest"
+    event-date: "2025-03-18"
+    event-time: "20:00"
+    event-url: "https://www.glasgowcomedyfestival.com/performances/an-improv-show-glasgow-improv-theatre-house-teams/"
+    event-image: "https://www.glasgowcomedyfestival.com/wp-content/uploads/2024/11/11-18-2024-114510-4413.jpg"
+    is-sold-out: false
+    event-summary: "Pretty Thistle is an improv show from Martin James & John McInnes from the Glasgow Improv Theatre."
+    venue-name: "Glasgow Improv Theatre"
+    venue-address: "12 Renfield Street, Glasgow, G2 5AR"
+
+  - event-name: "Jeff Khan: Christmas Day, Four AM (Glasgow Comedy Fest)"
+    event-date: "2025-03-18"
+    event-time: "21:30"
+    event-url: "https://www.glasgowcomedyfestival.com/performances/jeff-khan-christmas-day-four-am-glasgow-improv-theatre/"
+    event-image: "https://www.glasgowcomedyfestival.com/wp-content/uploads/2024/11/11-18-2024-105459-7345.jpg"
+    is-sold-out: false
+    event-summary: "An absurd hour of clowning from the Glasgow Improv Theatre’s Jeff Khan."
+    venue-name: "Glasgow Improv Theatre"
+    venue-address: "12 Renfield Street, Glasgow, G2 5AR"
+
+  - event-name: "Couch Surfs the Web (Glasgow Comedy Fest)"
+    event-date: "2025-03-25"
+    event-time: "19:00"
+    event-url: "https://www.glasgowcomedyfestival.com/performances/couch-surfs-the-web-glasgow-improv-theatre/"
+    event-image: "https://www.glasgowcomedyfestival.com/wp-content/uploads/2024/11/11-18-2024-120957-9404.jpg"
+    is-sold-out: false
+    event-summary: "A night of improv comedy where Couch… SURFS THE WEB!"
+    venue-name: "Glasgow Improv Theatre"
+    venue-address: "12 Renfield Street, Glasgow, G2 5AR"
+
+  - event-name: "Improv Cage Match (Glasgow Comedy Fest)"
+    event-date: "2025-03-25"
+    event-time: "20:30"
+    event-url: "https://www.glasgowcomedyfestival.com/performances/improv-cage-match-glasgow-improv-theatre/"
+    event-image: "https://www.glasgowcomedyfestival.com/wp-content/uploads/2024/11/11-18-2024-121121-5393.jpg"
+    is-sold-out: false
+    event-summary: "Two improv teams battle to be crowned champions of the Glasgow Improv Theatre this month. You decide who wins!"
+    venue-name: "Glasgow Improv Theatre"
+    venue-address: "12 Renfield Street, Glasgow, G2 5AR"

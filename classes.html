@@ -171,24 +171,10 @@ title: Classes
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
 
+{% include eventbrite-load.html %}
 <script type="text/javascript">
 
-    var allEventsData;
-
-    $(function() {
-        GetEvents();
-    });
-    
-    function GetEvents() {
-        var url = "https://www.eventbriteapi.com/v3/organizations/568772580943/events/?token=H2CWEK4JO55AWX2WB666&time_filter=current_future&expand=ticket_availability,venue&status=live";
-
-        $.get(url, function (data) {
-            allEventsData = data;
-            getNextEvents();
-        });
-    }
-    
-    function getNextEvents() {
+    function eventsLoaded() {
         addCourseTypes("101");
         addCourseTypes("201");
         addCourseTypes("301");

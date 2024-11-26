@@ -32,24 +32,11 @@ title:
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
 
+{% include eventbrite-load.html %}
+
 <script type="text/javascript">
 
-    var allEventsData;
-
-    $(function() {
-        GetEvents();
-    });
-    
-    function GetEvents() {
-        var url = "https://www.eventbriteapi.com/v3/organizations/568772580943/events/?token=H2CWEK4JO55AWX2WB666&time_filter=current_future&expand=ticket_availability,venue&status=live";
-
-        $.get(url, function (data) {
-            allEventsData = data;
-            getNextEvents();
-        });
-    }
-    
-    function getNextEvents() {
+    function eventsLoaded() {
 
         var workshops = allEventsData.events.filter(event => (event.name.text.toLowerCase().includes("course") || event.name.text.toLowerCase().includes("workshop")) && !event.ticket_availability.is_sold_out);
         var nextWorkshop = workshops[0];
@@ -60,9 +47,6 @@ title:
         displayNextShowCarousel(nextWorkshop);
 
         $("#carouselContainer").show("slow");
-        /*
-        allEventsData.events.forEach((event, index) => {
-        });*/
     }
 
 
@@ -125,3 +109,4 @@ title:
 
 
 </script>
+
