@@ -11,6 +11,7 @@ title:
 </div>
 <br /><br />
 
+
 <div class="mb-4 d-flex flex-wrap justify-content-center" id="carouselContainer" style="display: none !important;">
     <div class="card mb-3 col-md-3">
         <div class="carousel slide carousel-dark" data-bs-ride="carousel" id="carousel">
@@ -29,6 +30,7 @@ title:
         </div>
     </div>
 </div>
+{% include loading-spinner.html %}
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
 
@@ -46,7 +48,8 @@ title:
         displayNextShowCarousel(nextShow);
         displayNextShowCarousel(nextWorkshop);
 
-        $("#carouselContainer").show("slow");
+        $("#divLoading").fadeOut();
+        $("#carouselContainer").fadeIn("slow");
     }
 
 
