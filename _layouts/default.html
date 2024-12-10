@@ -1,6 +1,9 @@
 <!doctype html>
 <html lang="en">
   <head>
+    {% if page.noindex %}
+      <meta name="robots" content="noindex, nofollow">
+    {% endif %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% if page.title %}{{ page.title }} - {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
@@ -30,16 +33,6 @@
       })(window,document,'script','dataLayer','GTM-N7T4JDFM');</script>
       <!-- End Google Tag Manager -->
       
-    <!-- Google tag (gtag.js) 
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-P2RV5J6QBR"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-P2RV5J6QBR');
-    </script>
-    -->
   </head>
   <body>
     <!-- Google Tag Manager (noscript) -->

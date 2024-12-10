@@ -1,0 +1,169 @@
+---
+layout: default
+title: Advert
+noindex: true
+---
+
+
+<div class="row justify-content-center">
+    <div class="col-md-8 text-center">
+        <h2>Glasgow Improv Theatre</h2>
+        
+        <div class="text-center">
+            <span class="fa-stack fa-4x">
+                <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                <i class="fa fa-chair fa-stack-1x fa-inverse"></i>
+            </span>
+        </div>
+        <br />
+
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            Thanks for clicking on our advert :)
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        
+        <div class="alert alert-info alert-dismissible fade show" role="alert">
+            Looking to get started in improv? Sign up for <strong>GIT 101</strong>, our beginners improv course!
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        
+        <div class="" id="divNoGIT101Found" style="display: none;">
+            <h2 class="text-center">GIT 101 Courses</h2>
+            <p class="text-center">No GIT 101s currently on sale</p>
+            <p>
+                Sign up for our mailing list to receive alerts for new classes: 
+                <a class="btn btn-info btn-sm" href="{{site.mailing-list-link}}">Sign up to mailing list</a>
+            </p>
+        </div>
+
+        <div class="" id="event-container">
+            {% include loading-spinner.html %}
+            <br />
+            <p class="text-center text-muted">Loading...</p>
+        </div>
+
+        
+        <div class="text-center">
+            <p>Didn't find what you're looking for?<br /> 
+                Check out our full schedule:</p>
+            <a href="{{site.url}}/events#workshops" class="btn btn-primary btn-lg me-3">All Classes</a>
+            <a href="{{site.url}}/events#shows" class="btn btn-primary btn-lg ms-3">Shows</a>
+        </div>
+    </div>
+</div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+
+    {% include eventbrite-load.html %}
+
+    <script type="text/javascript">
+       
+        function eventsLoaded() {
+            applyFilter(); 
+        }
+
+        function applyFilter() {
+            
+            $("#event-container").empty();
+
+            displayEvents("101");
+            displayEvents("beginners");
+            
+        }
+
+        function displayEvents(filter){
+            var events;
+            var title;
+            if(filter === "101"){
+                events = allEventsData.events.filter(event => event.name.text.toLowerCase().includes("course") && event.name.text.toLowerCase().includes("101"));
+                title = "GIT 101 Courses";
+
+                if (events.length === 0) {
+                    $("#divNoGIT101Found").show();
+                }
+                else{
+                    $("#divNoGIT101Found").hide();
+                    $("#event-container").append($("<h2>").text(title));
+                }
+            }
+            else if(filter === "beginners"){
+                events = allEventsData.events.filter(event => event.name.text.toLowerCase().includes("beginners"));
+                title = "Beginners Drop-in Workshops";
+                $("#event-container").append($("<h2>").text(title));
+            }
+
+
+            var eventsByDate = {};
+
+            events.forEach(event => {
+                var startDate = new Date(event.start.local);
+                var dateFormatted = startDate.toLocaleString('en-GB', {
+                    weekday: 'long',
+                    day: 'numeric',
+                    month: 'short',
+                    year: 'numeric'
+                }).replace(/,/g, '');
+                var timeFormatted = startDate.toLocaleString('en-GB', {
+                    hour: 'numeric',
+                    minute: 'numeric',
+                    hour12: true
+                });
+
+                var dateKey = dateFormatted;
+
+                if (!eventsByDate[dateKey]) {
+                    eventsByDate[dateKey] = [];
+                }
+
+                eventsByDate[dateKey].push({ event, timeFormatted });
+            });
+
+            for (var dateKey in eventsByDate) {
+                var events = eventsByDate[dateKey];
+
+                var $dateContainer = $("<div>").addClass("mb-4 d-flex flex-wrap justify-content-center");
+                var $dateHeader = $("<h3 class='col-md-12 text-center mb-3'>").text(dateKey).addClass("mb-3");
+
+                events.forEach(eventData => {
+                    var event = eventData.event;
+                    var timeFormatted = eventData.timeFormatted;
+
+                    var name = event.name["text"];
+                    var summary = event.summary;
+                    var url = event.url;
+                    var startDate = new Date(event.start.local);
+                    var imageUrl = event.logo.original["url"];
+                    var venue = event.venue["name"];
+                    var venueAddress = event.venue.address["localized_address_display"];
+                    var isSoldOut = event.ticket_availability["is_sold_out"];
+
+                    var $eventCard = $("<div>").addClass("card mb-3 col-md-6");
+                    var $eventImageLink = $("<a>").attr("href", url).attr("target", "_blank");
+                    var $eventImage = $("<img>").addClass("card-img-top").attr("src", imageUrl);
+                    var $eventCardBody = $("<div>").addClass("card-body text-center");
+                    var $eventName = $("<h5>").addClass("card-title").text(name);
+                    var $eventSummary = $("<p>").addClass("card-text").text(summary);
+                    var $eventTime = $("<p>").addClass("card-text").text("Time: " + timeFormatted);
+                    var $eventDate = $("<p>").addClass("card-text").text("Date: " + dateKey);
+                    var $eventVenue = $("<p>").addClass("card-text").text("Venue: " + venue);
+                    var $eventAddress = $("<p>").addClass("card-text").text("Address: " + venueAddress);
+                    var $ticketLink = $("<a>").addClass("btn").attr("href", url).attr("target", "_blank");
+
+                    if (isSoldOut) {
+                        $ticketLink.text("Sold Out").addClass("btn-danger").prop("disabled", true);
+                    } else {
+                        $ticketLink.text("Get Tickets").addClass("btn-primary");
+                    }
+
+                    $eventImageLink.append($eventImage);
+                    $eventCardBody.append($eventName, $eventSummary, $eventTime, $eventDate, $eventVenue, $eventAddress, $ticketLink);
+                    $eventCard.append($eventImageLink, $eventCardBody);
+                    $dateContainer.append($eventCard);
+                });
+
+                $dateContainer.prepend($dateHeader);
+                $("#event-container").append($dateContainer);
+            }
+      }
+
+    </script>
