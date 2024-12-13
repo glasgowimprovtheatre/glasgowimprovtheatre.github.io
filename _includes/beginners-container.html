@@ -1,0 +1,27 @@
+<div class="alert alert-info alert-dismissible fade show" role="alert">
+    Looking to get started in improv? Sign up for <strong>GIT 101</strong>, our beginners improv course!
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
+<div class="" id="divNoGIT101Found" style="display: none;">
+    <h2 class="text-center">GIT 101 Courses</h2>
+    <p class="text-center">No GIT 101s currently on sale</p>
+    <p>
+        Sign up for our mailing list to receive alerts for new classes: 
+        <a class="btn btn-info btn-sm" href="{{site.mailing-list-link}}">Sign up to mailing list</a>
+    </p>
+</div>
+
+<div class="" id="event-container">
+    {% include loading-spinner.html %}
+    <br />
+    <p class="text-center text-muted">Loading...</p>
+</div>
+
+
+<div class="text-center">
+    <p>Didn't find what you're looking for?<br /> 
+        Check out our full schedule:</p>
+    <a href="{{site.url}}/events#workshops" class="btn btn-primary btn-lg me-3">All Classes</a>
+    <a href="{{site.url}}/events#shows" class="btn btn-primary btn-lg ms-3">Shows</a>
+</div>
