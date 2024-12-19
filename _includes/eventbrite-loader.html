@@ -1,6 +1,10 @@
 <script type="text/javascript">
     var allEventsData;
 
+    const CACHE_KEY = "eventsCache";
+    const CACHE_EXPIRY_KEY = "eventsCacheExpiry";
+    const CACHE_DURATION_MS = 30 * 60 * 1000; // 30 minutes
+
     const configEvents = [
         {% for event in site.events %}
         {
@@ -21,40 +25,80 @@
         GetEvents();
     });
 
+    // Main function to get events
     function GetEvents() {
+        if (isCacheValid()) {
+            console.log("Using cached data");
+            allEventsData = getCachedData();
+            processEvents(allEventsData);
+        } else {
+            console.log("Fetching fresh data");
+            fetchEventData();
+        }
+    }
+
+    // Check if cache is still valid
+    function isCacheValid() {
+        const cacheExpiry = localStorage.getItem(CACHE_EXPIRY_KEY);
+        return cacheExpiry && new Date().getTime() < cacheExpiry;
+    }
+
+    // Retrieve cached data
+    function getCachedData() {
+        const cachedData = localStorage.getItem(CACHE_KEY);
+        return cachedData ? JSON.parse(cachedData) : null;
+    }
+
+    // Save data to cache
+    function saveToCache(data) {
+        const now = new Date().getTime();
+        localStorage.setItem(CACHE_KEY, JSON.stringify(data));
+        localStorage.setItem(CACHE_EXPIRY_KEY, now + CACHE_DURATION_MS);
+    }
+
+    // Fetch event data from the API
+    function fetchEventData() {
         var url = "https://europe-west2-watchful-idea-302214.cloudfunctions.net/getEventbriteEvents";
 
-        $.get(url, function (data) {
-            allEventsData = data;
-            
-            if (allEventsData && allEventsData.events) {
-                const transformedEvents = configEvents.map(event => ({
-                    name: { text: event["event-name"] },
-                    start: { local: `${event["event-date"]}T${event["event-time"]}:00` },
-                    url: event["event-url"],
-                    logo: { original: { url: event["event-image"] } },
-                    ticket_availability: { is_sold_out: event["is-sold-out"] },
-                    summary: event["event-summary"],
-                    venue: {
-                        name: event["venue-name"],
-                        address: { localized_address_display: event["venue-address"] }
-                    }
-                }));
-                allEventsData.events = allEventsData.events.concat(transformedEvents);
-            } else {
-                allEventsData = { events: configEvents };
-            }
-
-            allEventsData.events.sort(function(a, b) {
-                return a.start.local.localeCompare(b.start.local);
-            });
-
-
-            if (typeof eventsLoaded === "function") {
-                eventsLoaded();
-            } else {
-                console.warn("eventsLoaded function is not defined.");
-            }
+        $.get(url, function(data) {
+            allEventsData = transformEventData(data);
+            saveToCache(allEventsData);
+            processEvents(allEventsData);
         });
+    }
+
+    // Transform event data with configEvents
+    function transformEventData(data) {
+        if (data && data.events) {
+            const transformedEvents = configEvents.map(event => ({
+                name: { text: event["event-name"] },
+                start: { local: `${event["event-date"]}T${event["event-time"]}:00` },
+                url: event["event-url"],
+                logo: { original: { url: event["event-image"] } },
+                ticket_availability: { is_sold_out: event["is-sold-out"] },
+                summary: event["event-summary"],
+                venue: {
+                    name: event["venue-name"],
+                    address: { localized_address_display: event["venue-address"] }
+                }
+            }));
+            data.events = data.events.concat(transformedEvents);
+        } else {
+            data = { events: configEvents };
+        }
+        return data;
+    }
+
+    // Process and display events
+    function processEvents(eventsData) {
+        eventsData.events.sort(function(a, b) {
+            return a.start.local.localeCompare(b.start.local);
+        });
+
+        if (typeof eventsLoaded === "function") {
+            eventsLoaded();
+        } else {
+            console.warn("eventsLoaded function is not defined.");
+        }
     }
 </script>
