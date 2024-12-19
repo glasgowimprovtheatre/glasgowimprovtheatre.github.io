@@ -1,0 +1,60 @@
+<script type="text/javascript">
+    var allEventsData;
+
+    const configEvents = [
+        {% for event in site.events %}
+        {
+            "event-name": "{{ event.event-name | escape }}",
+            "event-date": "{{ event.event-date }}",
+            "event-time": "{{ event.event-time }}",
+            "event-url": "{{ event.event-url | escape }}",
+            "event-image": "{{ event.event-image | escape }}",
+            "is-sold-out": {{ event.is-sold-out | jsonify }},
+            "event-summary": "{{ event.event-summary | escape }}",
+            "venue-name": "{{ event.venue-name | escape }}",
+            "venue-address": "{{ event.venue-address | escape }}"
+        }{% if forloop.last == false %},{% endif %}
+        {% endfor %}
+    ];
+
+    $(function() {
+        GetEvents();
+    });
+
+    function GetEvents() {
+        var url = "https://europe-west2-watchful-idea-302214.cloudfunctions.net/getEventbriteEvents";
+
+        $.get(url, function (data) {
+            allEventsData = data;
+            
+            if (allEventsData && allEventsData.events) {
+                const transformedEvents = configEvents.map(event => ({
+                    name: { text: event["event-name"] },
+                    start: { local: `${event["event-date"]}T${event["event-time"]}:00` },
+                    url: event["event-url"],
+                    logo: { original: { url: event["event-image"] } },
+                    ticket_availability: { is_sold_out: event["is-sold-out"] },
+                    summary: event["event-summary"],
+                    venue: {
+                        name: event["venue-name"],
+                        address: { localized_address_display: event["venue-address"] }
+                    }
+                }));
+                allEventsData.events = allEventsData.events.concat(transformedEvents);
+            } else {
+                allEventsData = { events: configEvents };
+            }
+
+            allEventsData.events.sort(function(a, b) {
+                return a.start.local.localeCompare(b.start.local);
+            });
+
+
+            if (typeof eventsLoaded === "function") {
+                eventsLoaded();
+            } else {
+                console.warn("eventsLoaded function is not defined.");
+            }
+        });
+    }
+</script>
