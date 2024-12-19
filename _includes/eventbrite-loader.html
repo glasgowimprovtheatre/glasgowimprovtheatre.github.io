@@ -28,11 +28,9 @@
     // Main function to get events
     function GetEvents() {
         if (isCacheValid()) {
-            console.log("Using cached data");
             allEventsData = getCachedData();
             processEvents(allEventsData);
         } else {
-            console.log("Fetching fresh data");
             fetchEventData();
         }
     }
