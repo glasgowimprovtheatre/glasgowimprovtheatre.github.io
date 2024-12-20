@@ -56,8 +56,9 @@
 
     // Fetch event data from the API
     function fetchEventData() {
-        var url = "https://europe-west2-watchful-idea-302214.cloudfunctions.net/getEventbriteEvents";
-
+        //var url = "https://europe-west2-watchful-idea-302214.cloudfunctions.net/getEventbriteEvents";
+        var url = "https://eventbrite.shrill-dust-2263.workers.dev/";
+        
         $.get(url, function(data) {
             allEventsData = transformEventData(data);
             saveToCache(allEventsData);
