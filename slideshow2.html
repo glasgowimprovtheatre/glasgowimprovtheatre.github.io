@@ -1,0 +1,298 @@
+---
+layout: slideshow-layout
+title: Slideshow
+noindex: true
+---
+<style>
+    .carousel-images img {
+        height: 300px;  
+        object-fit: cover;  
+        width: 100%;  
+        border-radius: 15px;
+    }
+
+    body{
+        background-color: lightgoldenrodyellow;
+    }
+
+    .qr-image{
+        max-height:120px;
+        width:auto;
+    }
+    
+    .qr-image-review{
+        max-height:90px;
+        width:auto;
+    }
+    .qr-heading{
+        font-size: 1.1rem;
+    }
+
+    .qr-card-body{
+        padding: 5px;
+    }
+</style>
+<div id="wholePage" style="display: none !important;">
+    <div class="text-center">
+    <h1>Coming soon to the Glasgow Improv Theatre!</h1>
+    </div> 
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3 text-center">
+                <br />
+                <div class="d-flex justify-content-center">
+                    <div class="card mb-1">
+                        <div class="card-body qr-card-body">
+                        <h3 class="card-title text-center mb-0 qr-heading">GIT Website</h3>
+                        <div class="text-center">
+                            <img src="/img/qr-code-website.png" class="card-img-top qr-image" alt="QR Code Website">
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="carouselLeft" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner carousel-images" id="carousel-images-left">
+                      <!-- Images will be inserted here dynamically -->
+                    </div>
+                  
+                    <!-- Next and Previous buttons -->
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselLeft" data-bs-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true" style="display: none;"></span>
+                      <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselLeft" data-bs-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true" style="display: none;"></span>
+                      <span class="visually-hidden">Next</span>
+                    </button>
+                  </div>
+                  
+                <div class="d-flex justify-content-center">
+                    <div class="card mt-1">
+                        <div class="card-body qr-card-body">
+                        <h3 class="card-title text-center mb-0 qr-heading">Google Review</h3>
+                        <div class="text-center">
+                            <img src="/img/qr-code-google-maps-review.png" class="card-img-top qr-image-review">
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 d-flex justify-content-center" id="carouselContainer" style="display: none !important;">
+                <div class="card">
+                    <div class="carousel slide carousel-dark" data-bs-ride="carousel" id="carousel">
+                        <div class="carousel-indicators">
+                        </div>
+                        <div class="carousel-inner" id="carouselItems" style="min-height: 590px;">
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev" style="/*margin-top: 185px;*/">
+                            <span class="carousel-control-prev-icon" aria-hidden="true" style="display: none;"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next" style="/*margin-top: 185px;*/">
+                            <span class="carousel-control-next-icon" aria-hidden="true" style="display: none;"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 text-center">
+                <br />
+                <!--
+                <h3>Mailing list:</h3>
+                <div>
+                    <img src="/img/qr-code-mailerlite.png" class="" height="150px">
+                </div>-->
+                
+                <div class="d-flex justify-content-center">
+                    <div class="card mb-1" style="">
+                        <div class="card-body qr-card-body">
+                        <h3 class="card-title text-center mb-0 qr-heading">Mailing list</h3>
+                        <div class="text-center">
+                            <img src="/img/qr-code-mailerlite.png" class="card-img-top qr-image" alt="QR Code Website">
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="carouselRight" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner carousel-images" id="carousel-images-right">
+                      <!-- Images will be inserted here dynamically -->
+                    </div>
+                  
+                    <!-- Next and Previous buttons -->
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselRight" data-bs-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true" style="display: none;"></span>
+                      <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselRight" data-bs-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true" style="display: none;"></span>
+                      <span class="visually-hidden">Next</span>
+                    </button>
+                  </div>
+
+                <div class="d-flex justify-content-center">
+                    <div class="card mt-1">
+                        <div class="card-body qr-card-body">
+                        <h3 class="card-title text-center mb-0 qr-heading">TripAdvisor Review</h3>
+                        <div class="text-center">
+                            <img src="/img/qr-code-tripadvisor-review.png" class="card-img-top qr-image-review">
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+    <div class="text-center">
+        <h2>Buy tickets for shows and improv classes: <a href="http://improvglasgow.co.uk">improvglasgow.co.uk</a></h2>
+        <h2 class="text-danger">Follow us and tag your photos <strong>@improvglasgow</strong></h2>
+    </div>
+</div>
+{% include eventbrite-loader.html %}
+<script type="text/javascript">
+    
+    function eventsLoaded() {
+        for(let i=0; i < 10; i++ )
+        {
+            displayNextShowCarousel(allEventsData.events[i]);
+        }
+
+
+        $("#carouselContainer").show();
+        $("#wholePage").show("slow");
+    }
+
+
+    function displayNextShowCarousel(event) {
+        if (!event) return;
+
+
+        var startDate = new Date(event.start.local);
+        var dateFormatted = startDate.toLocaleString('en-GB', {
+            weekday: 'long',
+            day: 'numeric',
+            month: 'short',
+            year: 'numeric'
+        }).replace(/,/g, '');
+        var timeFormatted = startDate.toLocaleString('en-GB', {
+            hour: 'numeric',
+            minute: 'numeric',
+            hour12: true
+        });
+
+        var name = event.name.text;
+        var url = event.url;
+        var imageUrl = event.logo.original.url;
+        var isSoldOut = event.ticket_availability.is_sold_out;
+        
+        var summary = event.summary;
+        var url = event.url;
+        var startDate = new Date(event.start.local);
+        var venue = event.venue["name"];
+        var venueAddress = event.venue.address["localized_address_display"];
+
+        var carouselSpeed = "15000";
+        var $carouselItem = $("<div>").addClass("carousel-item").attr("data-bs-interval", carouselSpeed);
+        var $eventImageContainer = $("<div>").addClass("position-relative");
+        var $eventImageLink = $("<a>").attr("href", url).attr("target", "_blank");
+        var $eventImage = $("<img>").addClass("card-img-top").attr("src", imageUrl).attr("alt", name);
+        var $eventCardBody = $("<div>").addClass("card-body text-center px-2");
+        var $eventName = $("<h2>").addClass("card-title").text(name);
+        var $strongText = $("<strong>").text(dateFormatted + " at " + timeFormatted);
+        var $eventDateAndTime = $("<h4>").addClass("card-text text-danger").append($strongText);
+        var $eventSummary = $("<p>").addClass("card-text lead").text(summary);
+
+        // Sold Out button
+        var $ticketLink = $("<a>").addClass("btn btn-danger sold-out-button")
+            .attr("href", url)
+            .attr("target", "_blank")
+            .text("Sold Out")
+            .prop("disabled", true)
+            .css({
+                "position": "absolute",    
+                "top": "10px",             
+                "right": "10px"            
+            });
+
+        $eventImageLink.append($eventImage);
+        $eventImageContainer.append($eventImageLink);
+
+        if (isSoldOut) {
+            $eventImageContainer.append($ticketLink); 
+        }
+
+        $eventCardBody.append($eventName, $eventDateAndTime, $eventSummary);
+        $carouselItem.append($eventImageContainer, $eventCardBody);
+
+        $("#carouselItems").append($carouselItem);
+
+        var slideIndex = $("#carouselItems .carousel-item").length - 1;
+        var $indicator = $("<button>")
+            .attr("type", "button")
+            .attr("data-bs-target", "#carousel")
+            .attr("data-bs-slide-to", slideIndex)
+            .attr("aria-label", "Slide " + (slideIndex + 1));
+
+        if (slideIndex === 0) {
+            $carouselItem.addClass("active");
+            $indicator.addClass("active").attr("aria-current", "true");
+        }
+
+        $(".carousel-indicators").append($indicator);
+
+    }
+
+</script>
+
+<script>
+    const maxImages = 123; 
+    const imageFolder = 'img/shows/';
+    const slideshowSpeed = 30000; 
+
+    let images = [];
+    for (let i = 1; i <= maxImages; i++) {
+        images.push(i + '.jpg');
+    }
+
+    function shuffle(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    }
+
+    function displayCarouselImages(carouselId, imageArray) {
+        const carouselInner = document.getElementById(carouselId);
+        imageArray.forEach((image, index) => {
+            const div = document.createElement('div');
+            div.classList.add('carousel-item');
+            if (index === 0) {
+                div.classList.add('active'); 
+            }
+
+            const imgElement = document.createElement('img');
+            imgElement.src = imageFolder + image;
+            imgElement.classList.add('d-block', 'w-100', 'rounded');
+
+            div.appendChild(imgElement);
+            carouselInner.appendChild(div);
+        });
+    }
+
+    const shuffledImagesLeft = shuffle([...images]); 
+    const shuffledImagesRight = shuffle([...images]); 
+
+    document.addEventListener('DOMContentLoaded', function() {
+        displayCarouselImages('carousel-images-left', shuffledImagesLeft);
+        displayCarouselImages('carousel-images-right', shuffledImagesRight);
+
+        const leftCarousel = new bootstrap.Carousel(document.getElementById('carouselLeft'), {
+            interval: slideshowSpeed
+        });
+        const rightCarousel = new bootstrap.Carousel(document.getElementById('carouselRight'), {
+            interval: slideshowSpeed
+        });
+    });
+</script>
