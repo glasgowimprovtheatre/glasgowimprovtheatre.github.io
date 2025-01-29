@@ -4,6 +4,22 @@ title: Slideshow
 noindex: true
 ---
 <style>
+    /* For Webkit (Chrome, Safari) */
+    ::-webkit-scrollbar {
+    display: none;
+    }
+
+    /* For Firefox */
+    html {
+    scrollbar-width: none;
+    }
+
+    /* For Edge & IE */
+    body {
+    -ms-overflow-style: none;
+    }
+
+
     .carousel-images img {
         height: 300px;  
         object-fit: cover;  
@@ -39,7 +55,6 @@ noindex: true
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-3 text-center">
-                <br />
                 <div class="d-flex justify-content-center">
                     <div class="card mb-1">
                         <div class="card-body qr-card-body">
@@ -98,12 +113,6 @@ noindex: true
             </div>
 
             <div class="col-md-3 text-center">
-                <br />
-                <!--
-                <h3>Mailing list:</h3>
-                <div>
-                    <img src="/img/qr-code-mailerlite.png" class="" height="150px">
-                </div>-->
                 
                 <div class="d-flex justify-content-center">
                     <div class="card mb-1" style="">
