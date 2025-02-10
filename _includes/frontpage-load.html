@@ -1,0 +1,78 @@
+
+<script type="text/javascript">
+
+    function eventsLoaded() {
+
+        var workshops = allEventsData.events.filter(event => (event.name.text.toLowerCase().includes("course") || event.name.text.toLowerCase().includes("workshop")) && !event.ticket_availability.is_sold_out);
+        var nextWorkshop = workshops[0];
+        shows = allEventsData.events.filter(event => !event.name.text.toLowerCase().includes("course") && !event.name.text.toLowerCase().includes("workshop") && !event.name.text.toLowerCase().includes("grad") && !event.ticket_availability.is_sold_out);
+        var nextShow = shows[0];
+
+        displayNextShowCarousel(nextShow);
+        displayNextShowCarousel(nextWorkshop);
+
+        $("#divLoading").fadeOut();
+        $("#carouselContainer").fadeIn("slow");
+    }
+
+
+    function displayNextShowCarousel(event) {
+    if (!event) return;
+
+
+    var startDate = new Date(event.start.local);
+    var dateFormatted = startDate.toLocaleString('en-GB', {
+        weekday: 'long',
+        day: 'numeric',
+        month: 'short',
+        year: 'numeric'
+    }).replace(/,/g, '');
+    var timeFormatted = startDate.toLocaleString('en-GB', {
+        hour: 'numeric',
+        minute: 'numeric',
+        hour12: true
+    });
+
+    var name = event.name.text;
+    var url = event.url;
+    var imageUrl = event.logo.original.url;
+    var isSoldOut = event.ticket_availability.is_sold_out;
+
+    var $carouselItem = $("<div>").addClass("carousel-item");
+    var $eventImageLink = $("<a>").attr("href", url).attr("target", "_blank");
+    var $eventImage = $("<img>").addClass("card-img-top").attr("src", imageUrl).attr("alt", name);
+    var $eventCardBody = $("<div>").addClass("card-body text-center px-2");
+    var $eventName = $("<h6>").addClass("card-title").text(name);
+    var $eventDateAndTime = $("<p>").addClass("card-text").text(dateFormatted + " at " + timeFormatted);
+    var $ticketLink = $("<a>").addClass("btn mb-4").attr("href", url).attr("target", "_blank");
+
+    if (isSoldOut) {
+        $ticketLink.text("Sold Out").addClass("btn-danger").prop("disabled", true);
+    } else {
+        $ticketLink.text("Get Tickets").addClass("btn-primary");
+    }
+
+    $eventImageLink.append($eventImage);
+    $eventCardBody.append($eventName, $eventDateAndTime, $ticketLink);
+    $carouselItem.append($eventImageLink, $eventCardBody);
+
+    $("#carouselItems").append($carouselItem);
+
+    var slideIndex = $("#carouselItems .carousel-item").length - 1;
+    var $indicator = $("<button>")
+        .attr("type", "button")
+        .attr("data-bs-target", "#carousel")
+        .attr("data-bs-slide-to", slideIndex)
+        .attr("aria-label", "Slide " + (slideIndex + 1));
+
+    if (slideIndex === 0) {
+        $carouselItem.addClass("active");
+        $indicator.addClass("active").attr("aria-current", "true");
+    }
+
+    $(".carousel-indicators").append($indicator);
+}
+
+
+</script>
+
