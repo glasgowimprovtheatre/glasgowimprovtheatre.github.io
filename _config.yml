@@ -43,7 +43,7 @@ teachers:
   - name: Karen
     headshot: karen1.jpg
     description: |
-      Karen Davidson has been a fixture in the Glasgow improv scene since 2019. Having trained with the Glasgow Improv Theatre, the Upright Citizens Brigade and the World’s Greatest Improv School she has been taught and inspired by some of the best improv teachers around. She has appeared in the legendary podcast Improv4Humans, with Matt Besser of UCB, and has performed in events such as Edinburgh Fringe, Glasgow International Comedy Festival, Edinburgh International Improv Festival, Robin Hood Improv Festival and others. She can be found performing at the Old Hairdressers on the third Tuesday of every month with her team Yer Da.
+      Karen Davidson has been a fixture in the Glasgow improv scene since 2019. Having trained with the Glasgow Improv Theatre, the Upright Citizens Brigade and the World’s Greatest Improv School she has been taught and inspired by some of the best improv teachers around. She has appeared in the legendary podcast Improv4Humans, with Matt Besser of UCB, and has performed in events such as Edinburgh Fringe, Glasgow International Comedy Festival, Edinburgh International Improv Festival, Robin Hood Improv Festival and others.
 
 teams:
   - name: Couch
@@ -68,22 +68,6 @@ teams:
       - title: instagram
         url: http://instagram.com/couchimprov
 
-  - name: Yer Da
-    icon: fa-users
-    description: |
-      <p>
-          The test to determine who Yer Da is came back inconclusive, but this bunch of improvisers will perform for your acceptance anyway.
-      </p>
-      <p>
-          You'll find them performing monthly at Glasgow Improv Theatre in their show Yer Da Wants a Word where they do a set (probably a Haroldy montage, it makes sense honest) before hosting arguably the funnest improv jam around.
-      </p>
-      <p>
-          Team members have been spotted doing guest appearances on legendary podcast Improv4Humans, Will Hines' How Was Your Week and in late night Edinburgh improv show Dating Crapp.
-      </p>
-    socials: 
-      - title: instagram
-        url: http://instagram.com/yerdaimprov
-        
   - name: F.L.U.S.H.
     icon: fa-water
     description: |
@@ -112,6 +96,19 @@ teams:
 
 
 former-teams:
+
+  - name: Yer Da
+    icon: fa-users
+    description: |
+      <p>
+          The test to determine who Yer Da is came back inconclusive, but this bunch of improvisers will perform for your acceptance anyway.
+      </p>
+      <p>
+          Team members have been spotted doing guest appearances on legendary podcast Improv4Humans.
+      </p>
+    socials: 
+      - title: instagram
+        url: http://instagram.com/yerdaimprov
 
   - name: Family Dinner
     icon: fa-utensils
