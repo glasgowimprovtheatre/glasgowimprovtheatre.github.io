@@ -1,0 +1,22 @@
+@font-face {
+    font-family: 'WonkyFontWowThatsWonky';
+    src: url('/fonts/WonkyFontWowThatsWonky.woff2') format('woff2'),
+         url('/fonts/WonkyFontWowThatsWonky.woff') format('woff'),
+         url('/fonts/WonkyFontWowThatsWonky.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'WonkyFontOhEvenWonkier';
+    src: url('/fonts/WonkyFontOhEvenWonkier.woff2') format('woff2'),
+         url('/fonts/WonkyFontOhEvenWonkier.woff') format('woff'),
+         url('/fonts/WonkyFontOhEvenWonkier.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'WonkyFontWowThatsWonky', Montserrat,-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+
