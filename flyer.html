@@ -1,0 +1,36 @@
+---
+layout: default
+title: Flyer
+---
+
+<h1 class="text-center">Welcome To The Glasgow Improv Theatre!</h1>
+<br />
+<div class="mb-4 d-flex flex-wrap justify-content-center">
+    <div class="">
+        
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            Thanks for checking out our flyer :)
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+    </div>
+</div>
+<div class="text-center">
+    <a href="{{site.url}}/events#workshops" class="btn btn-primary btn-lg me-3">Classes</a>
+    <a href="{{site.url}}/events#shows" class="btn btn-primary btn-lg ms-3">Shows</a>
+</div>
+<br />
+<p class="text-center">
+    <a href="{{site.url}}/faq" class="btn btn-info">
+        <i class="fa fa-circle-question"></i> Frequently Asked Questions
+    </a>
+</p>
+
+
+{% include frontpage-container.html %}
+
+{% include loading-spinner.html %}
+
+{% include eventbrite-loader.html %}
+
+{% include frontpage-load.html %}
