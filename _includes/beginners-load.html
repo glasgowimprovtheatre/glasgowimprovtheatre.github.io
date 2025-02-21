@@ -79,6 +79,7 @@
                 var venue = event.venue["name"];
                 var venueAddress = event.venue.address["localized_address_display"];
                 var isSoldOut = event.ticket_availability["is_sold_out"];
+                var waitlistAvailable = event.ticket_availability["waitlist_available"];
 
                 var $eventCard = $("<div>").addClass("card mb-3 col-md-6");
                 var $eventImageLink = $("<a>").attr("href", url).attr("target", "_blank");
@@ -92,7 +93,10 @@
                 var $eventAddress = $("<p>").addClass("card-text").text("Address: " + venueAddress);
                 var $ticketLink = $("<a>").addClass("btn").attr("href", url).attr("target", "_blank");
 
-                if (isSoldOut) {
+                if (isSoldOut && waitlistAvailable) {
+                    $ticketLink.text("Waitlist").addClass("btn-danger").prop("disabled", true);
+                } 
+                else if (isSoldOut) {
                     $ticketLink.text("Sold Out").addClass("btn-danger").prop("disabled", true);
                 } else {
                     $ticketLink.text("Get Tickets").addClass("btn-primary");
