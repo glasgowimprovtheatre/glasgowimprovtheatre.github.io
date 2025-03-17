@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stopwatch</title>
+    <style>
+        body {
+            background-color: black;
+            color: red;
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+        #display {
+            font-size: 25vw;
+            width: 100%;
+            text-align: center;
+            margin-bottom: 20px;
+            line-height: 1;
+        }
+        .btn {
+            background-color: transparent;
+            color: inherit;
+            border: 1px solid red;
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="display">00:00:00</div>
+    <div>
+        <button class="btn" onclick="startTimer()">Start</button>
+        <button class="btn" onclick="stopTimer()">Stop</button>
+        <button class="btn" onclick="resetTimer()">Reset</button>
+    </div>
+
+    <script>
+        let timer;
+        let startTime;
+        let elapsedTime = 0;
+
+        function updateDisplay() {
+            const time = new Date(elapsedTime);
+            const formattedTime =
+                String(time.getUTCHours()).padStart(2, '0') + ':' +
+                String(time.getUTCMinutes()).padStart(2, '0') + ':' +
+                String(time.getUTCSeconds()).padStart(2, '0');
+            document.getElementById('display').innerText = formattedTime;
+        }
+
+        function startTimer() {
+            if (!timer) {
+                startTime = Date.now() - elapsedTime;
+                timer = setInterval(() => {
+                    elapsedTime = Date.now() - startTime;
+                    updateDisplay();
+                }, 1000);
+            }
+        }
+
+        function stopTimer() {
+            clearInterval(timer);
+            timer = null;
+        }
+
+        function resetTimer() {
+            stopTimer();
+            elapsedTime = 0;
+            updateDisplay();
+        }
+
+        updateDisplay();
+    </script>
+</body>
+</html>
