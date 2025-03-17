@@ -45,17 +45,31 @@
     </div>
 
     <script>
-        let peer = new Peer('1234');
+        let peer = new Peer('1234', {
+            host: 'peerjs.com',
+            port: 443,
+            path: '/'
+        });
+
         let conn;
 
+        peer.on('open', (id) => {
+            console.log(`PeerJS connected with ID: ${id}`);
+        });
+
         peer.on('connection', (connection) => {
+            console.log(`New connection established with peer: ${connection.peer}`);
             conn = connection;
             conn.on('data', (data) => handleIncomingData(data));
         });
 
         function connectToPeer() {
-            conn = peer.connect('1234');
-            conn.on('data', (data) => handleIncomingData(data));
+            if (!conn || !conn.open) {
+                conn = peer.connect('1234');
+                conn.on('open', () => console.log('Connected to peer 1234'));
+                conn.on('data', (data) => handleIncomingData(data));
+                conn.on('error', (err) => console.error('Connection error:', err));
+            }
         }
 
         connectToPeer();
