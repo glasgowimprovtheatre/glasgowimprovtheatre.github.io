@@ -45,24 +45,41 @@
     
     <script src="https://unpkg.com/peerjs@1.4.7/dist/peerjs.min.js"></script>
 <script>
-    const peer = new Peer(null, {
+    const roomId = "GIT1234";
+    const isHost = location.hash === "#host"; // Add #host in the URL for one tab to act as the host
+    const peer = new Peer(isHost ? `${roomId}-host` : null, {
         host: '0.peerjs.com',
         port: 443,
         secure: true
     });
-    const roomId = "GIT1234";
-    let connections = [];
+    let connections = {};
     let timer;
     let startTime;
     let elapsedTime = 0;
 
     peer.on('open', (id) => {
-        console.log(`Peer connected with ID: ${id}`);
-        connectToRoom();
+        console.log(`Connected with Peer ID: ${id}`);
+        if (isHost) {
+            console.log("This tab is the host!");
+        } else {
+            console.log("This tab is a client!");
+            // Attempt to connect to the host
+            const conn = peer.connect(`${roomId}-host`);
+            conn.on('open', () => {
+                console.log("Connected to host!");
+                connections["host"] = conn;
+                setupConnection(conn);
+            });
+        }
     });
 
     peer.on('connection', (conn) => {
-        connections.push(conn);
+        console.log(`New connection from Peer ID: ${conn.peer}`);
+        connections[conn.peer] = conn;
+        setupConnection(conn);
+    });
+
+    function setupConnection(conn) {
         conn.on('data', (data) => {
             const { type, time } = data;
             if (type === 'start') {
@@ -73,17 +90,6 @@
             } else if (type === 'reset') {
                 syncReset();
             }
-        });
-    });
-
-    function connectToRoom() {
-        peer.listAllPeers((peers) => {
-            peers.forEach((peerId) => {
-                if (peerId !== peer.id && peerId.startsWith(roomId)) {
-                    const conn = peer.connect(peerId);
-                    connections.push(conn);
-                }
-            });
         });
     }
 
@@ -117,7 +123,7 @@
     }
 
     function broadcast(action, time = elapsedTime) {
-        connections.forEach(conn => {
+        Object.values(connections).forEach(conn => {
             conn.send({ type: action, time });
         });
     }
