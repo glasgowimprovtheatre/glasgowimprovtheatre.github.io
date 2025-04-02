@@ -5,7 +5,7 @@
 
         var workshops = allEventsData.events.filter(event => (event.name.text.toLowerCase().includes("course") || event.name.text.toLowerCase().includes("workshop")) && !event.ticket_availability.is_sold_out);
         var nextWorkshop = workshops[0];
-        shows = allEventsData.events.filter(event => !event.name.text.toLowerCase().includes("course") && !event.name.text.toLowerCase().includes("workshop") && !event.name.text.toLowerCase().includes("grad") && !event.ticket_availability.is_sold_out);
+        shows = allEventsData.events.filter(event => !event.name.text.toLowerCase().includes("course") && !event.name.text.toLowerCase().includes("workshop") && !event.name.text.toLowerCase().includes("grad") && !event.name.text.toLowerCase().includes("jam") && !event.ticket_availability.is_sold_out);
         var nextShow = shows[0];
 
         displayNextShowCarousel(nextShow);
