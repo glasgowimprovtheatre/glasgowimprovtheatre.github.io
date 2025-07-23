@@ -1,0 +1,54 @@
+---
+layout: default
+title: Coaches
+---
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-12 text-center">
+            <h1 class="display-4 mb-4">Coaches</h1>
+            <div class="mb-4">
+                <span class="fa-stack fa-4x">
+                    <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                    <i class="fa fa-dumbbell fa-stack-1x fa-inverse"></i>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-12 col-sm-10 col-md-6 mb-2">
+            <p class="lead text-center">
+                We recommend working with a coach during your practice sessions. Here are some of the coaches available at the Glasgow Improv Theatre that you can book:
+            </p>
+        </div>
+    </div>
+
+
+    <div class="row">
+        {% for teacher in site.teachers %}
+        <div class="col-12 col-md-6 col-lg-3 mb-4 d-flex">
+            <div class="card h-100 w-100 border-0 bg-light shadow-sm">
+                <div class="card-body text-center d-flex flex-column justify-content-start" style="min-height: 420px;">
+                <h3 class="card-title">{{ teacher.name }}</h3>
+                <img src="img/headshots/{{ teacher.headshot }}" class="img-fluid rounded shadow mb-3" alt="{{ teacher.name }}">
+                <p class="card-text mb-1">
+                    <a href="mailto:{{ teacher.email }}?subject={{ teacher.name | uri_escape }}%20-%20Improv%20Coaching">
+                        <i class="fa fa-envelope"></i>
+                        Email to book {{ teacher.name }}
+                    </a>
+
+                </p>
+
+                <button class="btn btn-sm btn-outline-primary mb-2" type="button" data-bs-toggle="collapse" data-bs-target="#bio-{{ forloop.index }}">
+                    <i class="fa fa-user me-1"></i> View Bio
+                </button>
+
+                <div class="collapse mt-2 text-start" id="bio-{{ forloop.index }}">
+                    <p class="card-text small">{{ teacher.description }}</p>
+                </div>
+            </div>
+
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
