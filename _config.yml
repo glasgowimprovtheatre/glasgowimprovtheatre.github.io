@@ -5,6 +5,8 @@ description: "Glasgow Improv Theatre - The GIT. Improv classes, workshops, and s
 baseurl: "" # the subpath of your site, e.g. /blog
 url: http://improvglasgow.co.uk # the base hostname & protocol for your site, e.g. http://example.com
 
+showImageCount: 261
+
 mailing-list-link: https://improvglasgow.co.uk/mailing-list
 review-link-google: https://g.page/r/CeXEfSfYqbhhEBM/review
 review-link-tripadvisor: https://www.tripadvisor.co.uk/UserReviewEdit-g186534-d18856895-Glasgow_Improv_Theatre-Glasgow_Scotland.html
