@@ -1,25 +1,46 @@
-<div class="container py-4 mt-5 border-top">
+<div id="imageContainer" class="container py-4 mt-5 border-top d-none">
   <div class="row justify-content-center">
     <div class="col-12 col-sm-10 col-md-8 col-lg-6">
       <div class="card shadow rounded-3 overflow-hidden">
         <a href="/events">
-            <img id="randomImage" class="img-fluid" alt="Glasgow Improv Theatre events" title="Glasgow Improv Theatre events"/>
+          <img id="randomImage" class="img-fluid"
+               alt="Glasgow Improv Theatre events"
+               title="Glasgow Improv Theatre events"/>
         </a>
       </div>
     </div>
   </div>
 </div>
 
-
 <script>
 const imageFolder = 'img/shows/';
 const imageCount = {{ site.showImageCount }};
 
 function showRandomImage() {
-    const randomIndex = Math.floor(Math.random() * imageCount) + 1;
-    const imagePath = `${imageFolder}${randomIndex}.jpg`;
-    document.getElementById('randomImage').src = imagePath;
+  const randomIndex = Math.floor(Math.random() * imageCount) + 1;
+  const imagePath = `${imageFolder}${randomIndex}.jpg`;
+
+  const img = document.getElementById('randomImage');
+  const container = document.getElementById('imageContainer');
+
+  img.onload = function() {
+    container.classList.remove('d-none');
+    container.classList.add('fade-in');
+  };
+
+  img.src = imagePath;
 }
 
 window.onload = showRandomImage;
 </script>
+
+<style>
+.fade-in {
+  animation: fadeIn 0.7s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+</style>
