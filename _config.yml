@@ -74,11 +74,91 @@ teams:
       - title: instagram
         url: http://instagram.com/couchimprov
 
+  - name: Bounce House
+    icon: fa-chess-rook
+    description: |
+      <p>
+          GIT House team
+      </p>
+      <p>
+        Bounce House are on a mission - to solve all of the petty squabbles they come across.
+      </p>
+      <p>
+        Whether it's a random Am I The Asshole post on Reddit or a conundrum shared by an audience member they're here to help. Armed only with bold confidence and longform improv, come along and laugh as Bounce House fix the weird and wonderful issues we all face. You'll leave feeling 10x better*
+      </p>
+      <p>
+        *Bounce House guidance does not constitute medical, legal or useful advice.
+      </p>
+    socials: 
+      - title: instagram
+        url: http://instagram.com/bouncehouseimprov
+
+  - name: Spread
+    icon: fa-newspaper
+    description: |
+      <p>
+          GIT House team
+      </p>
+      <p>
+        Spread presents: Under the Covers.
+      </p>
+      <p>
+        Improvised comedy inspired by print media!
+      </p>
+      <p>
+        Spread will delve under the covers of the weird and wonderful world of gossip magazines to find inspiration for their comedy scenes.
+      </p>
+    socials: 
+      - title: instagram
+        url: http://instagram.com/spreadimprov
+
+  - name: Saved by the Beep
+    icon: fa-bell
+    description: |
+      <p>
+          GIT Harold team
+      </p>
+    socials: 
+      - title: instagram
+        url: http://instagram.com/savedbythebeep.improv
+
+  - name: With Bits!
+    icon: fa-glass-water
+    description: |
+      <p>
+          GIT Harold team
+      </p>
+    socials: 
+      - title: instagram
+        url: http://instagram.com/withbits.improv
+
+  - name: tubducky
+    icon: fa-bath
+    description: |
+      <p>
+          GIT Hamish team
+      </p>
+    socials: 
+      - title: instagram
+        url: http://instagram.com/tubducky.improv
+
+  - name: Smoking Cat
+    icon: fa-cat
+    description: |
+      <p>
+          GIT Hamish team
+      </p>
+    socials: 
+      - title: instagram
+        url: http://instagram.com/smokingcat.improv
+
+former-teams:
+
   - name: F.L.U.S.H.
     icon: fa-water
     description: |
       <p>
-          GIT House team at Glasgow Harold Night
+          GIT House team at Glasgow Harold Night (2024/2025)
       </p>
       <p>
         What on Earth does F.L.U.S.H. mean... Is it a beautiful poker hand? An unimaginable amount of money? Toilet thing? Come to GIT Harold night to find out!*
@@ -94,14 +174,12 @@ teams:
     icon: fa-cloud-rain
     description: |
       <p>
-          GIT House team at Glasgow Harold Night
+          GIT House team at Glasgow Harold Night (2024/2025)
       </p>
     socials: 
       - title: instagram
         url: http://instagram.com/raintownimprov
 
-
-former-teams:
 
   - name: Yer Da
     icon: fa-users
