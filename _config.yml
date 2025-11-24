@@ -2,6 +2,9 @@ title: Glasgow Improv Theatre - The GIT
 email: glasgowimprovtheatre@gmail.com
 description: "Glasgow Improv Theatre - The GIT. Improv classes, workshops, and shows in Glasgow, Scotland."
 
+plugins:
+  - jekyll-redirect-from
+
 baseurl: "" # the subpath of your site, e.g. /blog
 url: http://improvglasgow.co.uk # the base hostname & protocol for your site, e.g. http://example.com
 
@@ -260,3 +263,63 @@ former-teams:
       - title: instagram
         url: http://instagram.com/presidentdogimprov
 
+events:
+  - event-name: "Hamish Night (Glasgow Comedy Fest)"
+    event-date: "2026-03-16"
+    event-time: "19:00"
+    event-url: "https://www.glasgowcomedyfestival.com/performances/hamish-night-glasgow-improv-theatre/"
+    event-image: "https://www.glasgowcomedyfestival.com/wp-content/uploads/2025/11/11-07-2025-135219-4336-768x432.jpg"
+    is-sold-out: false
+    event-summary: "Two Glasgow Improv Theatre house teams performing The Harold. Featuring tubducky and Smoking Cat!"
+    venue-name: "The Old Hairdressers"
+    venue-address: "12 Renfield Street, Glasgow, G2 5AR"
+
+  - event-name: "Pretty Thistle (Glasgow Comedy Fest)"
+    event-date: "2026-03-16"
+    event-time: "20:30"
+    event-url: "https://www.glasgowcomedyfestival.com/performances/pretty-thistle-glasgow-improv-theatre/"
+    event-image: "https://www.glasgowcomedyfestival.com/wp-content/uploads/2025/11/11-07-2025-141004-8435.jpg"
+    is-sold-out: false
+    event-summary: "Pretty Thistle is an improv show from Martin James and John McInnes from the Glasgow Improv Theatre. A fully improvised comedy show from an audience suggestion."
+    venue-name: "The Old Hairdressers"
+    venue-address: "12 Renfield Street, Glasgow, G2 5AR"
+
+  - event-name: "Harold Night (Glasgow Comedy Fest)"
+    event-date: "2026-03-17"
+    event-time: "19:00"
+    event-url: "https://www.glasgowcomedyfestival.com/performances/harold-night-glasgow-improv-theatre/"
+    event-image: "https://www.glasgowcomedyfestival.com/wp-content/uploads/2025/11/11-07-2025-135902-7343.jpg"
+    is-sold-out: false
+    event-summary: "Two Glasgow Improv Theatre house teams performing a fully improvised comedy show. Feat. Saved By The Beep and With Bits!"
+    venue-name: "The Old Hairdressers"
+    venue-address: "12 Renfield Street, Glasgow, G2 5AR"
+
+  - event-name: "Couch Surfs the Web (Glasgow Comedy Fest)"
+    event-date: "2026-03-17"
+    event-time: "20:30"
+    event-url: "https://www.glasgowcomedyfestival.com/performances/couch-surfs-the-web-glasgow-improv-theatre-2/"
+    event-image: "https://www.glasgowcomedyfestival.com/wp-content/uploads/2025/11/11-07-2025-140250-8618.jpg"
+    is-sold-out: false
+    event-summary: "A night of improv comedy where Couch looks up bad reviews of places you’ve been to!"
+    venue-name: "The Old Hairdressers"
+    venue-address: "12 Renfield Street, Glasgow, G2 5AR"
+    
+  - event-name: "Bounce House Solves Everything (Glasgow Comedy Fest)"
+    event-date: "2026-03-24"
+    event-time: "19:00"
+    event-url: "https://www.glasgowcomedyfestival.com/performances/bounce-house-solves-everything-glasgow-improv-theatre/"
+    event-image: "https://www.glasgowcomedyfestival.com/wp-content/uploads/2025/11/11-07-2025-140442-6344.jpg"
+    is-sold-out: false
+    event-summary: "Solving all of the petty squabbles they come across with improv comedy"
+    venue-name: "The Old Hairdressers"
+    venue-address: "12 Renfield Street, Glasgow, G2 5AR"
+    
+  - event-name: "Spread Under the Covers"
+    event-date: "2026-03-24"
+    event-time: "20:30"
+    event-url: "https://www.glasgowcomedyfestival.com/performances/spread-under-the-covers-glasgow-improv-theatre/"
+    event-image: "https://www.glasgowcomedyfestival.com/wp-content/uploads/2025/11/11-07-2025-140624-7080.jpg"
+    is-sold-out: false
+    event-summary: "Improvised comedy inspired by print media!"
+    venue-name: "The Old Hairdressers"
+    venue-address: "12 Renfield Street, Glasgow, G2 5AR"
