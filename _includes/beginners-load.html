@@ -30,7 +30,7 @@
             }
         }
         else if(filter === "beginners"){
-            events = allEventsData.events.filter(event => event.name.text.toLowerCase().includes("beginners"));
+            events = allEventsData.events.filter(event => event.name.text.toLowerCase().includes("beginners") || (event.name.text.toLowerCase().includes("women") && event.name.text.toLowerCase().includes("workshop")));
             title = "Beginners Drop-in Workshops";
             $("#event-container").append($("<h2>").text(title));
         }
