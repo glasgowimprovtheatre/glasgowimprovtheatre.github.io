@@ -53,10 +53,29 @@ noindex: true
     .qr-card-body{
         padding: 5px;
     }
+    .snowflake {
+        position: fixed;
+        top: -10px;
+        color: white;
+        font-size: 1em;
+        pointer-events: none;
+        user-select: none;
+        z-index: 9999;
+        animation: fall linear infinite;
+        opacity: 0.9;
+    }
+
+    @keyframes fall {
+        0% { transform: translateY(-10vh) rotate(0deg); }
+        100% { transform: translateY(110vh) rotate(360deg); }
+    }
+
 </style>
 <div id="wholePage" style="display: none !important;">
     <div class="text-center">
-    <h1>Coming soon to the Glasgow Improv Theatre!</h1>
+        <div class="d-inline-block" id="divHeader">
+            <h1>Coming soon to the Glasgow Improv Theatre!</h1>
+        </div>
     </div> 
     <div class="container-fluid">
         <div class="row">
@@ -160,8 +179,10 @@ noindex: true
         </div>
     </div> 
     <div class="text-center">
-        <h2>Buy tickets for shows and improv classes: <a href="http://improvglasgow.co.uk">improvglasgow.co.uk</a></h2>
-        <h2 class="text-danger">Follow us and tag your photos <strong>@improvglasgow</strong></h2>
+        <div class="d-inline-block" id="divFooter">
+            <h2>Buy tickets for shows and improv classes: <a href="http://improvglasgow.co.uk">improvglasgow.co.uk</a></h2>
+            <h2 class="text-danger">Follow us and tag your photos <strong>@improvglasgow</strong></h2>
+        </div>
     </div>
 </div>
 {% include eventbrite-loader.html %}
@@ -379,3 +400,49 @@ noindex: true
         });
     });
 </script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const url = window.location;
+    const hasXmas =
+        url.hash.toLowerCase() === "#xmas" ||
+        url.search.toLowerCase().includes("xmas=1");
+
+    if (hasXmas) {
+        startSnow();
+        document.body.style.backgroundImage = "url('/img/xmas.png')";
+        document.body.style.backgroundSize = "contain";
+        document.body.style.backgroundRepeat = "repeat";
+        document.body.style.backgroundPosition = "center";
+
+        const heading = document.querySelector("h1");
+        if (heading) {
+            heading.textContent = "Merry Christmas from the Glasgow Improv Theatre!";
+        }
+        document.getElementById("divHeader").classList.add("bg-light");
+        document.getElementById("divFooter").classList.add("bg-light");
+    }
+
+});
+</script>
+
+<script>
+function startSnow() {
+    const snowCount = 40;
+
+    for (let i = 0; i < snowCount; i++) {
+        const snow = document.createElement("div");
+        snow.className = "snowflake";
+        snow.innerHTML = "❄";
+
+        snow.style.left = Math.random() * 100 + "vw";
+        snow.style.fontSize = (Math.random() * 1.2 + 0.6) + "em";
+        snow.style.animationDuration = (Math.random() * 5 + 5) + "s"; 
+        snow.style.animationDelay = Math.random() * 5 + "s";
+
+        document.body.appendChild(snow);
+    }
+}
+</script>
+
