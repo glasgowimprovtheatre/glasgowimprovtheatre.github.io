@@ -264,16 +264,6 @@ former-teams:
         url: http://instagram.com/presidentdogimprov
 
 events:
-  - event-name: "Couch Surfs the Web (Glasgow Comedy Fest)"
-    event-date: "2026-03-17"
-    event-time: "20:30"
-    event-url: "https://www.glasgowcomedyfestival.com/performances/couch-surfs-the-web-glasgow-improv-theatre-2/"
-    event-image: "https://www.glasgowcomedyfestival.com/wp-content/uploads/2025/11/11-07-2025-140250-8618.jpg"
-    is-sold-out: false
-    event-summary: "A night of improv comedy where Couch looks up bad reviews of places you’ve been to!"
-    venue-name: "The Old Hairdressers"
-    venue-address: "12 Renfield Street, Glasgow, G2 5AR"
-    
   - event-name: "Bounce House Solves Everything (Glasgow Comedy Fest)"
     event-date: "2026-03-24"
     event-time: "19:00"
