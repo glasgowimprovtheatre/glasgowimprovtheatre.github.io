@@ -264,16 +264,6 @@ former-teams:
         url: http://instagram.com/presidentdogimprov
 
 events:
-  - event-name: "Harold Night (Glasgow Comedy Fest)"
-    event-date: "2026-03-17"
-    event-time: "19:00"
-    event-url: "https://www.glasgowcomedyfestival.com/performances/harold-night-glasgow-improv-theatre/"
-    event-image: "https://www.glasgowcomedyfestival.com/wp-content/uploads/2025/11/11-07-2025-135902-7343.jpg"
-    is-sold-out: false
-    event-summary: "Two Glasgow Improv Theatre house teams performing a fully improvised comedy show. Feat. Saved By The Beep and With Bits!"
-    venue-name: "The Old Hairdressers"
-    venue-address: "12 Renfield Street, Glasgow, G2 5AR"
-
   - event-name: "Couch Surfs the Web (Glasgow Comedy Fest)"
     event-date: "2026-03-17"
     event-time: "20:30"
