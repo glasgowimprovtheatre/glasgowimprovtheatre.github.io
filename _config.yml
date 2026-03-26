@@ -262,24 +262,3 @@ former-teams:
     socials: 
       - title: instagram
         url: http://instagram.com/presidentdogimprov
-
-events:
-  - event-name: "Bounce House Solves Everything (Glasgow Comedy Fest)"
-    event-date: "2026-03-24"
-    event-time: "19:00"
-    event-url: "https://www.glasgowcomedyfestival.com/performances/bounce-house-solves-everything-glasgow-improv-theatre/"
-    event-image: "https://www.glasgowcomedyfestival.com/wp-content/uploads/2025/11/11-07-2025-140442-6344.jpg"
-    is-sold-out: false
-    event-summary: "Solving all of the petty squabbles they come across with improv comedy"
-    venue-name: "The Old Hairdressers"
-    venue-address: "12 Renfield Street, Glasgow, G2 5AR"
-    
-  - event-name: "Spread Under the Covers"
-    event-date: "2026-03-24"
-    event-time: "20:30"
-    event-url: "https://www.glasgowcomedyfestival.com/performances/spread-under-the-covers-glasgow-improv-theatre/"
-    event-image: "https://www.glasgowcomedyfestival.com/wp-content/uploads/2025/11/11-07-2025-140624-7080.jpg"
-    is-sold-out: false
-    event-summary: "Improvised comedy inspired by print media!"
-    venue-name: "The Old Hairdressers"
-    venue-address: "12 Renfield Street, Glasgow, G2 5AR"
