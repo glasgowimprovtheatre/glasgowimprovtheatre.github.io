@@ -64,7 +64,7 @@ noindex: true
 
         <div class="flex-grow-1 text-center">
             <h2 class="mb-0">Glasgow Improv Marathon</h2>
-            <h1 class="mb-0">Current team</h2>
+            <h1 class="mb-0" id="currentTeam"></h2>
         </div>
 
         <div class="text-center ms-3" >
@@ -79,3 +79,64 @@ noindex: true
     </div>
 </div>
 
+<script>
+const teams = [
+    "Falling & Laughing",
+    "Yes Leopard",
+    "Mara Joy & Friends",
+
+    "Pretty Thistle",
+    "tubducky!",
+    "Blether",
+
+    "With Bits!",
+    "DINGFEST",
+    "Smoking cat",
+
+    "Bit shows!",
+
+    "Date Night",
+    "Pencil",
+    "Nice Things",
+
+    "Couch (+ Toni/Drew)",
+    "Charlie & Mark",
+    "Belly Belly",
+
+    "Bounce House",
+    "Toni & Drew",
+
+    "Spread",
+    "The Dreaming",
+    "Saved by the Beep"
+];
+
+let currentIndex = 0;
+
+function renderTeam() {
+    document.getElementById("currentTeam").textContent = teams[currentIndex];
+}
+
+function nextTeam() {
+    currentIndex = (currentIndex + 1) % teams.length;
+    renderTeam();
+}
+
+function prevTeam() {
+    currentIndex = (currentIndex - 1 + teams.length) % teams.length;
+    renderTeam();
+}
+
+document.addEventListener("keydown", function(e) {
+    if (e.key === "ArrowRight") {
+        e.preventDefault();
+        nextTeam();
+    }
+    if (e.key === "ArrowLeft") {
+        e.preventDefault();
+        prevTeam();
+    }
+});
+
+renderTeam();
+</script>
