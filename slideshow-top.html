@@ -1,0 +1,81 @@
+---
+layout: slideshow-layout-top
+title: Slideshow Top
+noindex: true
+---
+<style>
+    /* For Webkit (Chrome, Safari) */
+    ::-webkit-scrollbar {
+    display: none;
+    }
+
+    /* For Firefox */
+    html {
+    scrollbar-width: none;
+    }
+
+    /* For Edge & IE */
+    body {
+    -ms-overflow-style: none;
+    }
+
+    body{
+        background: linear-gradient(
+            to bottom,
+            lightgoldenrodyellow 0%,
+            lightgoldenrodyellow 25%,
+            black 25%,
+            black 100%
+        );
+        min-height: 100vh;
+    }
+    
+    h1{
+        font-size: 4rem;
+    }
+    h3{
+        font-size: 0.8rem;
+    }
+
+    .top-bar{
+        height: 25vh;
+        padding: 1vh 2vw;
+    }
+
+    .logo-img{
+        height: 22vh;
+        width: auto;
+    }
+
+    .qr-img{
+        height: 16vh;
+        width: auto;
+    }
+
+
+</style>
+<div>
+    <div class="top-bar d-flex align-items-center w-100">
+
+        <div>
+            <img src="/img/GIM-logo-transparent.png"
+                class="logo-img">
+        </div>
+
+        <div class="flex-grow-1 text-center">
+            <h2 class="mb-0">Glasgow Improv Marathon</h2>
+            <h1 class="mb-0">Current team</h2>
+        </div>
+
+        <div class="text-center ms-3" >
+            <img src="/img/qr-code-glasgowimprovmarathon.png"
+                class="qr-img">
+
+            <h3 class="mb-0">
+                Info / Donate
+            </h3>
+        </div>
+
+    </div>
+</div>
+
