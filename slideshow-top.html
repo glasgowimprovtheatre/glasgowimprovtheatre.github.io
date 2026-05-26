@@ -3,73 +3,123 @@ layout: slideshow-layout-top
 title: Slideshow Top
 noindex: true
 ---
+
 <style>
     /* For Webkit (Chrome, Safari) */
     ::-webkit-scrollbar {
-    display: none;
+        display: none;
     }
 
     /* For Firefox */
     html {
-    scrollbar-width: none;
+        scrollbar-width: none;
     }
 
     /* For Edge & IE */
     body {
-    -ms-overflow-style: none;
+        -ms-overflow-style: none;
     }
 
-    body{
+    :root {
+        --top-bg: lightgoldenrodyellow;
+        --bottom-bg: black;
+        --text-color: black;
+        --subtext-color: black;
+        --bs-heading-color: black;
+        --logo-src: url('/img/git-logo-long-transparent-black.png');
+    }
+
+    body.dark-mode {
+        --top-bg: black;
+        --bottom-bg: black;
+        --text-color: white;
+        --subtext-color: white;
+        --bs-heading-color: white;
+        --logo-src: url('/img/git-logo-long-transparent.png');
+    }
+
+    body {
         background: linear-gradient(
             to bottom,
-            lightgoldenrodyellow 0%,
-            lightgoldenrodyellow 25%,
-            black 25%,
-            black 100%
+            var(--top-bg) 0%,
+            var(--top-bg) 25%,
+            var(--bottom-bg) 25%,
+            var(--bottom-bg) 100%
         );
         min-height: 100vh;
+        color: var(--text-color);
+        transition: background 0.3s ease, color 0.3s ease;
     }
-    
-    h1{
+
+    h1 {
         font-size: 4rem;
     }
-    h3{
+
+    h2,
+    h3 {
+        color: var(--subtext-color);
+    }
+
+    h3 {
         font-size: 0.8rem;
     }
 
-    .top-bar{
+    .top-bar {
         height: 25vh;
         padding: 1vh 2vw;
     }
 
-    .logo-img{
+    .logo-img {
         height: 22vh;
         width: auto;
     }
 
-    .qr-img{
+    .qr-img {
         height: 16vh;
         width: auto;
     }
 
+    .theme-toggle {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: rgba(255,255,255,0.15);
+        border: 1px solid rgba(255,255,255,0.3);
+        color: inherit;
+        padding: 10px 14px;
+        border-radius: 999px;
+        cursor: pointer;
+        backdrop-filter: blur(8px);
+        font-size: 0.9rem;
+    }
 
+    body.dark-mode .theme-toggle {
+        background: rgba(255,255,255,0.08);
+        border-color: rgba(255,255,255,0.2);
+    }
 </style>
+
 <div>
     <div class="top-bar d-flex align-items-center w-100">
 
         <div>
-            <img src="/img/git-logo-long-transparent-black.png"
-                class="logo-img">
+            <img
+                id="logo"
+                src="/img/git-logo-long-transparent-black.png"
+                class="logo-img"
+            >
         </div>
 
         <div class="flex-grow-1 text-center">
             <h2 class="mb-0">Glasgow Improv Theatre</h2>
-            <h1 class="mb-0" id="currentTeam" contenteditable="true"></h2>
+            <h1 class="mb-0" id="currentTeam" contenteditable="true"></h1>
         </div>
 
-        <div class="text-center ms-3" >
-            <img src="/img/qr-code-website.png"
-                class="qr-img">
+        <div class="text-center ms-3">
+            <img
+                src="/img/qr-code-website.png"
+                class="qr-img"
+            >
 
             <h3 class="mb-0">
                 @improvglasgow
@@ -85,6 +135,8 @@ const teams = [
 ];
 
 let currentIndex = 0;
+let darkMode = true;
+document.body.classList.add("dark-mode");
 
 function renderTeam() {
     document.getElementById("currentTeam").textContent = teams[currentIndex];
@@ -100,16 +152,41 @@ function prevTeam() {
     renderTeam();
 }
 
+function updateLogo() {
+    const logo = document.getElementById("logo");
+
+    logo.src = darkMode
+        ? "/img/git-logo-long-transparent.png"
+        : "/img/git-logo-long-transparent-black.png";
+}
+
+function toggleTheme() {
+    darkMode = !darkMode;
+
+    document.body.classList.toggle("dark-mode", darkMode);
+
+    updateLogo();
+}
+
 document.addEventListener("keydown", function(e) {
     if (e.key === "ArrowRight") {
         e.preventDefault();
         nextTeam();
     }
+
     if (e.key === "ArrowLeft") {
         e.preventDefault();
         prevTeam();
     }
+    if (
+        e.key === "ArrowUp" ||
+        e.key === "ArrowDown"
+    ) {
+        e.preventDefault();
+        toggleTheme();
+    }
 });
 
 renderTeam();
+updateLogo();
 </script>
