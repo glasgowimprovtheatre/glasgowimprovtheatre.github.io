@@ -168,9 +168,9 @@ noindex: true
                 <div class="d-flex justify-content-center">
                     <div class="card mt-1">
                         <div class="card-body qr-card-body">
-                        <h3 class="card-title text-center mb-0 qr-heading">Merch</h3>
+                        <h3 class="card-title text-center mb-0 qr-heading">Donate</h3>
                         <div class="text-center">
-                            <img src="/img/qr-code-merch.png" class="card-img-top qr-image-review">
+                            <img src="/img/qr-code-donate.png" class="card-img-top qr-image-review">
                         </div>
                         </div>
                     </div>
@@ -194,8 +194,6 @@ noindex: true
             displayNextShowCarousel(allEventsData.events[i]);
         }
 
-        addMerchSlide();
-        addMarathonSlide();
 
         $("#carouselContainer").show();
         $("#wholePage").show("slow");
@@ -279,72 +277,6 @@ noindex: true
 
         $(".carousel-indicators").append($indicator);
 
-    }
-    function addMerchSlide() {
-        var $carouselItem = $("<div>").addClass("carousel-item").attr("data-bs-interval", "15000");
-        
-        var $eventImageContainer = $("<div>").addClass("position-relative");
-        var $eventImage = $("<img>").addClass("card-img-top").attr("src", "/img/merch-slide.png").attr("alt", "Merch Image");
-        
-        var $eventCardBody = $("<div>").addClass("card-body text-center px-2");
-        var $eventName = $("<h2>").addClass("card-title").text("Get Your GIT Merch!");
-        var $eventDateAndTime = $("<h4>").addClass("card-text text-danger").html("<strong>Yes we do t-shirts now!</strong>");
-        var $eventSummary = $("<p>").addClass("card-text lead").text("Scan the QR code to buy some merch!");
-        
-
-        $eventImageContainer.append($eventImage);
-        $eventCardBody.append($eventName, $eventDateAndTime, $eventSummary);
-        $carouselItem.append($eventImageContainer, $eventCardBody);
-
-        $("#carouselItems").append($carouselItem);
-
-        var slideIndex = $("#carouselItems .carousel-item").length - 1;
-        var $indicator = $("<button>")
-            .attr("type", "button")
-            .attr("data-bs-target", "#carousel")
-            .attr("data-bs-slide-to", slideIndex)
-            .attr("aria-label", "Slide " + (slideIndex + 1));
-
-        if (slideIndex === 0) {
-            $carouselItem.addClass("active");
-            $indicator.addClass("active").attr("aria-current", "true");
-        }
-
-        $(".carousel-indicators").append($indicator);
-    }
-
-    function addMarathonSlide() {
-        var $carouselItem = $("<div>").addClass("carousel-item").attr("data-bs-interval", "15000");
-        
-        var $eventImageContainer = $("<div>").addClass("position-relative");
-        var $eventImage = $("<img>").addClass("card-img-top").attr("src", "/img/Glasgow Improv Marathon - details.png").attr("alt", "Glasgow Improv Marathon");
-        
-        var $eventCardBody = $("<div>").addClass("card-body text-center px-2");
-            /*
-        var $eventName = $("<h2>").addClass("card-title").text("Glasgow Improv Marathon!");
-        var $eventDateAndTime = $("<h4>").addClass("card-text text-danger").html("<strong>Yes we do t-shirts now!</strong>");
-        var $eventSummary = $("<p>").addClass("card-text lead").text("Scan the QR code to buy some merch!");
-        */
-
-        $eventImageContainer.append($eventImage);
-        //$eventCardBody.append($eventName, $eventDateAndTime, $eventSummary);
-        $carouselItem.append($eventImageContainer/*, $eventCardBody*/);
-
-        $("#carouselItems").append($carouselItem);
-
-        var slideIndex = $("#carouselItems .carousel-item").length - 1;
-        var $indicator = $("<button>")
-            .attr("type", "button")
-            .attr("data-bs-target", "#carousel")
-            .attr("data-bs-slide-to", slideIndex)
-            .attr("aria-label", "Slide " + (slideIndex + 1));
-
-        if (slideIndex === 0) {
-            $carouselItem.addClass("active");
-            $indicator.addClass("active").attr("aria-current", "true");
-        }
-
-        $(".carousel-indicators").append($indicator);
     }
 
 </script>
