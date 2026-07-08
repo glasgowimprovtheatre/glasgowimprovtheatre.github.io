@@ -101,7 +101,7 @@ teams:
     icon: fa-newspaper
     description: |
       <p>
-          GIT House team
+          GIT House team 2025/2026
       </p>
       <p>
         Spread presents: Under the Covers.
@@ -120,7 +120,7 @@ teams:
     icon: fa-bell
     description: |
       <p>
-          GIT Harold team
+          GIT Harold team 2025/2026
       </p>
     socials: 
       - title: instagram
@@ -130,7 +130,7 @@ teams:
     icon: fa-glass-water
     description: |
       <p>
-          GIT Harold team
+          GIT Harold team 2025/2026
       </p>
     socials: 
       - title: instagram
@@ -140,7 +140,10 @@ teams:
     icon: fa-bath
     description: |
       <p>
-          GIT Hamish team
+          GIT Hamish team 2025/2026
+      </p>
+      <p>
+        Quack quack, welcome to the tub! Big hot improv soup!
       </p>
     socials: 
       - title: instagram
@@ -150,7 +153,7 @@ teams:
     icon: fa-cat
     description: |
       <p>
-          GIT Hamish team
+          GIT Hamish team 2025/2026
       </p>
     socials: 
       - title: instagram
