@@ -9363,9 +9363,6 @@ Gave
 Gavel
 Gawk
 Gawking
-Gayest
-Gayness
-Gays
 Gaze
 Gazebo
 Gazed
@@ -17537,7 +17534,6 @@ Quartet
 Queasy
 Queen
 Queens
-Queers
 Quell
 Queller
 Query
@@ -23085,7 +23081,6 @@ Trance
 Tranquil
 Tranquility
 Tranquilizer
-Trans
 Transaction
 Transactions
 Transatlantic
