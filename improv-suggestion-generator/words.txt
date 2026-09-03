@@ -12228,9 +12228,6 @@ Junior
 Juniors
 Juniper
 Junk
-Junkie
-Junkies
-Junky
 Junkyard
 Juries
 Jurisdiction
@@ -14192,11 +14189,6 @@ Molecular
 Molecule
 Molecules
 Moles
-Molest
-Molestation
-Molested
-Molester
-Molesting
 Moll
 Mollie
 Mollusk
@@ -15955,7 +15947,6 @@ Pediatrics
 Pedicure
 Pedicures
 Pedigree
-Pedophile
 Pedro
 Pee
 Peed
@@ -24944,7 +24935,6 @@ Wool
 Woolly
 Woops
 Woozy
-Wops
 Word
 Worded
 Wording
