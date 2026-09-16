@@ -98,6 +98,22 @@ teams:
       - title: instagram
         url: http://instagram.com/bouncehouseimprov
 
+  - name: Saved by the Beep
+    icon: fa-bell
+    description: |
+      <p>
+        Saved by the Beep are a joyously anarchic mix of performers who will always have each other's backs. 
+      </p>
+      <p>
+        Whether it be bold sound and movement, big characters, or just plain old weird Beep guarantee each show will be experimental, over the top and quintessentially them.
+      <p>
+          GIT Harold team 2025/2026 & 2026/2027
+      </p>
+    socials: 
+      - title: instagram
+        url: http://instagram.com/savedbythebeep.improv
+
+former-teams:
   - name: Spread
     icon: fa-newspaper
     description: |
@@ -116,25 +132,12 @@ teams:
     socials: 
       - title: instagram
         url: http://instagram.com/spreadimprov
-
-  - name: Saved by the Beep
-    icon: fa-bell
-    description: |
-      <p>
-        Saved by the Beep are a joyously anarchic mix of performers who will always have each other's backs. 
-      </p>
-      <p>
-        Whether it be bold sound and movement, big characters, or just plain old weird Beep guarantee each show will be experimental, over the top and quintessentially them.
-      <p>
-          GIT Harold team 2025/2026 & 2026/2027
-      </p>
-    socials: 
-      - title: instagram
-        url: http://instagram.com/savedbythebeep.improv
-
   - name: With Bits!
     icon: fa-glass-water
     description: |
+      <p>
+        🍊Freshly squeezed Harold Team
+      </p>
       <p>
           GIT Harold team 2025/2026
       </p>
@@ -164,8 +167,6 @@ teams:
     socials: 
       - title: instagram
         url: http://instagram.com/smokingcat.improv
-
-former-teams:
 
   - name: F.L.U.S.H.
     icon: fa-water
