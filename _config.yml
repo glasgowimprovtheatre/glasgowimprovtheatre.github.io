@@ -102,16 +102,59 @@ teams:
     icon: fa-bell
     description: |
       <p>
+          GIT Harold team 2025/2026 & 2026/2027
+      </p>
+      <p>
         Saved by the Beep are a joyously anarchic mix of performers who will always have each other's backs. 
       </p>
       <p>
         Whether it be bold sound and movement, big characters, or just plain old weird Beep guarantee each show will be experimental, over the top and quintessentially them.
-      <p>
-          GIT Harold team 2025/2026 & 2026/2027
       </p>
     socials: 
       - title: instagram
         url: http://instagram.com/savedbythebeep.improv
+
+  - name: Menace
+    icon: fa-users
+    description: |
+      </p>
+          GIT Harold team 2026/2027
+      </p>
+      <p>
+        Bringing Charisma, Uniqueness, Nerve & Talent (Yes, and)
+      </p>
+    socials: 
+      - title: instagram
+        url: http://instagram.com/menace_improv
+
+  - name: CHUMP
+    icon: fa-users
+    description: |
+      </p>
+          GIT Hamish team 2026/2027
+      </p>
+      <p>
+        CHUMP are a lovely group of people who want to make you laugh on the first Tuesday of every month. They're not above employing silliness to reach their goal. 
+      </p>
+    socials: 
+      - title: instagram
+        url: http://instagram.com/chumpimprov
+
+  - name: Club Von Trapp!
+    icon: fa-users
+    description: |
+      </p>
+          GIT Hamish team 2026/2027
+      </p>
+      <p>
+        You are now entering Club Von Trapp. Buckle in for the best year of your life - the halcyon days are here and it'll never be the same. These are the nights you never forget, where legends are born, and that you wish would last forever. You don't have to stay here, but you can't go home
+      </p>
+      <p>
+        At Club Von Trapp everyone's welcome - no choice too big, no moves too small. In da club, we all fam."
+      </p>
+    socials: 
+      - title: instagram
+        url: http://instagram.com/clubvontrapp
 
 former-teams:
   - name: Spread
@@ -132,14 +175,15 @@ former-teams:
     socials: 
       - title: instagram
         url: http://instagram.com/spreadimprov
+
   - name: With Bits!
     icon: fa-glass-water
     description: |
       <p>
-        🍊Freshly squeezed Harold Team
+          GIT Harold team 2025/2026
       </p>
       <p>
-          GIT Harold team 2025/2026
+        🍊Freshly squeezed Harold Team
       </p>
     socials: 
       - title: instagram
@@ -198,6 +242,9 @@ former-teams:
   - name: Yer Da
     icon: fa-users
     description: |
+      <p>
+          GIT House team
+      </p>
       <p>
           The test to determine who Yer Da is came back inconclusive, but this bunch of improvisers will perform for your acceptance anyway.
       </p>
