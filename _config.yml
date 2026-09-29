@@ -128,7 +128,7 @@ teams:
         url: http://instagram.com/menace_improv
 
   - name: CHUMP
-    icon: fa-users
+    icon: fa-coins
     description: |
       </p>
           GIT Hamish team 2026/2027
@@ -141,7 +141,7 @@ teams:
         url: http://instagram.com/chumpimprov
 
   - name: Club Von Trapp!
-    icon: fa-users
+    icon: fa-mountain
     description: |
       </p>
           GIT Hamish team 2026/2027
