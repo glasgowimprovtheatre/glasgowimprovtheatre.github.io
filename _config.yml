@@ -99,7 +99,7 @@ teams:
         url: http://instagram.com/bouncehouseimprov
 
   - name: Shush Puppies (Silent Soundtrack)
-    icon: fa-bell
+    icon: fa-volume-off
     description: |
       <p>
           GIT House Team 2026/2027
