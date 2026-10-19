@@ -98,6 +98,18 @@ teams:
       - title: instagram
         url: http://instagram.com/bouncehouseimprov
 
+  - name: Shush Puppies (Silent Soundtrack)
+    icon: fa-bell
+    description: |
+      <p>
+          GIT House Team 2026/2027
+      </p>
+      <p>
+        Shush Puppies perform silent improvised scenes along to music
+      </p>
+    socials: 
+      - title: instagram
+        url: http://instagram.com/theshushpuppies.improv
   - name: Saved by the Beep
     icon: fa-bell
     description: |
